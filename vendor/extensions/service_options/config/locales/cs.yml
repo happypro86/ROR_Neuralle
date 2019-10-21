@@ -1,0 +1,28 @@
+cs:
+  refinery:
+    plugins:
+      service_options:
+        title: Service Options
+    service_options:
+      admin:
+        service_options:
+          actions:
+            create_new: Přidat Service Option
+            reorder: Řadit Service Options
+            reorder_done: Konec řazení Service Options
+          records:
+            title: Service Options
+            sorry_no_results: Litujeme, ale nebyly nalezny žádné výsledky.
+            no_items_yet: Zatím nebyly vytvořeny žádné Service Options. Zvolte "Přidat Service Option" pro přidání prvního service option.
+          service_option:
+            view_live_html: Zobrazit náhled service option<br/><em>(otevře se v novém okně)</em>
+            edit: Upravit service option
+            delete: Smazat service option
+      service_options:
+        show:
+          other: Další Service Options
+  activerecord:
+    attributes:
+      'refinery/service_options/service_option':
+        title: Title
+        description: Description

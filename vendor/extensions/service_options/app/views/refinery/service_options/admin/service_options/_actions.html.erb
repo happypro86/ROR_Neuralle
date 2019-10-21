@@ -1,0 +1,20 @@
+<ul>
+  <% if ::Refinery::ServiceOptions::Admin::ServiceOptionsController.searchable? %>
+    <li>
+      <%= render '/refinery/admin/search', :url => refinery.service_options_admin_service_options_path %>
+    </li>
+  <% end %>
+  <li>
+    <%= action_label :add, refinery.new_service_options_admin_service_option_path, t('.create_new') %>
+  </li>
+<% if !searching? && ::Refinery::ServiceOptions::Admin::ServiceOptionsController.sortable? && ::Refinery::ServiceOptions::ServiceOption.many? %>
+  <li>
+    <%= action_label :reorder,
+                     refinery.service_options_admin_service_options_path,
+                     t('.reorder', what:  "Service Options"), id: 'reorder_action'%>
+    <%= action_label :reorder_done,
+                     refinery.service_options_admin_service_options_path,
+                      t('.reorder_done', what: "Service Options"), id: 'reorder_action_done', class: 'hidden'%>
+  </li>
+<% end %>
+</ul>

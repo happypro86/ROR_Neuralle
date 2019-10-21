@@ -1,0 +1,7 @@
+- if @posts.any?
+  %section#blog_posts
+    -# = render "/refinery/blog/shared/full_width_post", post: @recent_post
+    - @posts.each_slice(4) do |slice|
+      .row
+        = render :partial => "/refinery/blog/shared/post", collection: slice
+      .clearfix

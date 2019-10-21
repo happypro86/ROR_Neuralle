@@ -1,0 +1,14 @@
+-# .wrapper.col-sm-6
+  .product-tile{ "data-price" => set_discount(@rss_distribution_product_price) }
+    %h4 RSS Feed Distribution
+    %p.description Select how many podcast episodes you'd like us to upload & distribute on your RSS Feed.
+    %hr
+    %h5 Number of episodes:
+
+    = form_for order_item(@rss_distribution_product.id), remote: true do |f|
+      = f.hidden_field :product_id, value: @rss_distribution_product.id
+      = fa_icon "rss", class: ("active" if @rss_distribution_order_item.quantity > 0)
+      = f.number_field :quantity, class: "form-control"
+
+    %hr
+      .product-price= formatted_rss_distribution_total_price

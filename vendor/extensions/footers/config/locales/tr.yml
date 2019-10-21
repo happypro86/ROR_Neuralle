@@ -1,0 +1,29 @@
+tr:
+  refinery:
+    plugins:
+      footers:
+        title: Footers
+    footers:
+      admin:
+        footers:
+          actions:
+            create_new: Yeni Ekle Footer
+            reorder: Tekrar sirala Footers
+            reorder_done: Tekrar siralama tamamlandiFooters
+          records:
+            title: Footers
+            sorry_no_results: Uzgunum! Herhangi bir sonuc bulunamadi.
+            no_items_yet: Herhangi bir Footers yok henuz.  Tikla "Yeni Ekle Footer" eklemek senin ilk footer.
+          footer:
+            view_live_html: Bunu canlu footer goruntule <br/><em>(yeni bir pencerede acar)</em>
+            edit: Bunu Duzenle footer
+            delete: Bunu Sil footer sonsuza dek
+      footers:
+        show:
+          other: Diger Footers
+  activerecord:
+    attributes:
+      'refinery/footers/footer':
+        title: Title
+        link: Link
+        icon: Icon

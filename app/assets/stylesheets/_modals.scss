@@ -1,0 +1,190 @@
+.modal-open {
+  overflow-y: scroll;
+  padding-right: 0 !important;
+}
+
+.modal .fade .in {
+  padding-right: 0 !important;
+}
+
+.fade {
+  background-color: rgba(39, 26, 17, 0.65);
+}
+
+.static {
+  display: block !important;
+  position: static !important;
+  opacity: 1 !important;
+  top: auto;
+  bottom: auto;
+  left: auto;
+  right: auto;
+  .modal-dialog {
+    margin: 160px 0 80px;
+  }
+  .modal-content {
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.15);
+  }
+  .modal-body {
+    padding: 40px 40px 55px;
+  }
+  .close {
+    display: none;
+  }
+
+  @media (max-width: 449px) {
+    .modal-dialog {
+      margin: 57px 0 0;
+    }
+  }
+}
+
+.modal {
+  text-align: center;
+  padding: 0!important;
+
+  &:before {
+    content: '';
+    display: inline-block;
+    height: 80%;
+    vertical-align: middle;
+  }
+  .close {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    opacity: 0.2;
+    transition: all 0.2s ease;
+    z-index: 100;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  @media (max-width: 449px) {
+    &:before {
+      content: '';
+      display: none;
+      height: 0;
+      vertical-align: top;
+    }
+    .close {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+.modal-dialog {
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 520px;
+  width: auto;
+
+  @media (max-width: 991px) {
+    width: calc(100% - 20px);
+    margin: 0;
+  }
+  @media (max-width: 449px) {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.modal-content {
+  background: linear-gradient(135deg, #fff6f4 0%, #fff9f5 100%);
+  border: none;
+  border-radius: 5px;
+  box-shadow: none;
+  width: 520px;
+
+  @media (max-width: 991px) {
+    width: 100%;
+  }
+  @media (max-width: 449px) {
+    height: 100%;
+    border-radius: 0;
+  }
+}
+
+.modal-body {
+  padding: 55px 40px 50px;
+
+  @media (max-width: 449px) {
+    padding: 50px 15px;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+#lead-capture-modal {
+  .form-control {
+    border: 1px solid #eaeaea;
+  }
+  .btn {
+    background: $green;
+    margin: 10px 0 0;
+    padding: 12px 18px;
+    width: 100%;
+  }
+  div[class*="col-"] {
+    padding: 0;
+  }
+  .thankyou {
+    display: none;
+    text-align: center;
+    padding: 20px 0;
+    h3 {
+      margin: 0 0 10px;
+      color: $tomato;
+    }
+    p {
+      text-align: center;
+      margin: 0;
+      color: $characoal;
+      font-size: 1.8rem;
+      &.small {
+        font-size: 1.6rem;
+      }
+    }
+
+    @media (max-width: 449px) {
+      h3 {
+        font-size: 2rem;
+      }
+      p {
+        font-size: 1.7rem;
+      }
+    }
+  }
+
+  .form {
+    h1 {
+      font-size: 2.6rem;
+      margin: 0 0 15px;
+    }
+    p {
+      margin: 0 0 30px;
+      font-size: 1.7rem;
+    }
+    .signature {
+      margin: 0 0 20px;
+    }
+
+    @media (max-width: 449px) {
+      br {
+        display: none;
+      }
+    }
+  }
+
+  .signature {
+    img {
+      border-radius: 100px;
+      width: 50px;
+      margin: 15px 0 15px;
+    }
+  }
+}

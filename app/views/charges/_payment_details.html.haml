@@ -1,0 +1,12 @@
+= form_tag charges_path do
+  - if flash[:error].present?
+    #error-explanation
+      %p= flash[:error]
+
+  %script.stripe-button{"data-amount" => @order.total_price * 100, "data-description" => payment_description, "data-key" => Rails.configuration.stripe[:publishable_key], "data-locale" => "auto", "data-email" => @order.email, "data-image" => "/logo_red.png", "data-name" => "Neuralle Pty Ltd", "data-panel-label" => "Pay A{{amount}}", :src => "https://checkout.stripe.com/checkout.js"}
+
+  - if @order.subscription_type == 1
+    = link_to bitpay_charges_path, class: 'btn btn-pay-bitcoin' do
+      Pay with&nbsp;
+      = image_tag 'bitcoin.png'
+      = image_tag 'btc-green.png'

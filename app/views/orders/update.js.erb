@@ -1,0 +1,10 @@
+// Update pricing page
+
+$('#pricing .finish.wizard-finish').html("<%=j render 'orders/wizard_finish_button' %>")
+$('#total-price').html("<%=j render 'orders/total_price' %>")
+
+
+// Update checkout page
+
+$('#checkout #review-list').html("<%=j render 'orders/review_list' %>")
+$('#checkout #payment-details').html("<%=j render 'charges/payment_details' %>")

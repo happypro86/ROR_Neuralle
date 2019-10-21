@@ -1,0 +1,57 @@
+%h4 How long will your video be?
+.long-handle
+  = render "orders/duration_slider", product: @video_products.first, quantity: 30, step: 1, mins: true
+.clearfix
+
+%h4 How many videos?
+= render "orders/quantity_slider", product: @video_products.first, quantity: 30, step: 1, money: false
+.clearfix
+
+.question
+  %h4 What formats would you like?
+  %h5 One format available through video, $50 per extra format
+  = form_for order_item(@video_products.first.id), remote: true do |f|
+    = f.label :format_horizontal do
+      = image_tag "pricing/format_horizontal.png"
+      %span
+        Horizontal
+        %br
+        .small (16:9)
+      = f.check_box :format_horizontal, checked: order_item(@video_products.first.id).format_horizontal
+    = f.label :format_vertical do
+      = image_tag "pricing/format_vertical.png"
+      %span
+        Vertical
+        %br
+        .small (9:16)
+      = f.check_box :format_vertical, checked: order_item(@video_products.first.id).format_vertical
+    = f.label :format_square do
+      = image_tag "pricing/format_square.png"
+      %span
+        Square
+        %br
+        .small (1:1)
+      = f.check_box :format_square, checked: order_item(@video_products.first.id).format_square
+    = f.label :format_custom do
+      = image_tag "pricing/format_custom.png"
+      %span
+        Custom
+        %br
+        .small (?)
+      = f.check_box :format_custom, checked: order_item(@video_products.first.id).format_custom
+.clearfix
+
+#video-social-distribution.social-distribution
+  = render "orders/video_social_distribution"
+
+.hidden-product
+  .product-offer{ class: ("hidden" if videographer_hire_order_item.duration > 0) }
+    %h4 Do you require video footage shot?
+    = link_to "Yes", "javascript:void(0)", class: "btn uppercase bold"
+
+  .product-select{ class: ("active" if videographer_hire_order_item.duration > 0) }
+    %h4 How many hours of footage?
+    = render "orders/duration_slider", product: @videographer_hire_product, quantity: 30, step: 1
+    %h4 How much per hour?
+    .long-handle
+      = render "orders/footage_per_hour_slider", product: @videographer_hire_product, quantity: 3000, step: 100, money: true

@@ -1,0 +1,24 @@
+-# .row
+  = form_for @order, remote: true do |f|
+    - @packages.each do |package|
+
+      - unless package.name == "customise"
+        .col-md-4
+          = f.label "package_id_#{package.id}".to_sym, class: "package-tile #{package.name.downcase}" do
+            = f.radio_button :package_id, package.id, value: package.id
+            %h4= package.title
+            %p.subtitle= package.description
+            %hr
+            - if package.features.present?
+              .product-description.package
+                %p= package.features.split(" | ").join("<br>").html_safe { |f| f }
+              %hr
+            .product-footer
+              %span{ class: "btn primary product-price" }= package.price ? formatted_price_with_symbol(package.price) : "Select below"
+
+      - else
+        .clearfix
+        .btn-wrapper
+          = f.label "package_id_#{package.id}".to_sym, class: "btn bold cta customise-selector #{('hidden') if customise_package?}" do
+            = f.radio_button :package_id, package.id, value: package.id
+            %span= package.description

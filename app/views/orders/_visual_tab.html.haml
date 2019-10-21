@@ -1,0 +1,24 @@
+%section#visual-production
+  %h2 Graphic Design
+
+  .row
+    .col-md-5
+      .sliders-explanation
+        %p Choose the image type to suit your content goals. We come up with a design concept based off your specifications, or let us do the thinking for you.
+        %h5 What we do
+        %ul
+          %li
+            .icon= fa_icon "bolt"
+            .text Concept creation
+          %li
+            .icon= fa_icon "edit"
+            .text Draft concept
+          %li
+            .icon= fa_icon "list-ul"
+            .text Review & revisions
+          %li
+            .icon= fa_icon "flag"
+            .text Final concept
+
+    .col-md-7#image-sliders.sliders-wrapper
+      = render "orders/image_sliders"

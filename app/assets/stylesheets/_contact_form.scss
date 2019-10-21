@@ -1,0 +1,95 @@
+@mixin input_icons($image_url) {
+  background: url('/assets/#{$image_url}') no-repeat 16px center;
+}
+
+@mixin input_icons_required($image_url) {
+  background: url('/assets/#{$image_url}') no-repeat 16px center, url("/assets/required.svg") no-repeat top right;
+}
+
+
+.contact-form {
+  $text_color: gray;
+  
+  .field.row {
+    margin-bottom: 3rem;
+  }
+  
+	input[type="text"], 
+  input[type="email"],
+  input[type="tel"],
+  textarea {
+    color: $text_color;
+    display: block;
+		width: 100%;
+    appearance: none;
+    padding: 12px;
+    border: 1px solid #cfd9db;
+  	background-color: #ffffff;
+  	border-radius: .25em;
+  	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08);
+    padding-left: 54px !important;
+  }
+  &:focus {
+    outline: none;
+    border-color: #2c97de;
+    box-shadow: 0 0 5px rgba(44, 151, 222, 0.2);
+  }
+  
+  textarea {
+    min-height: 200px;
+    resize: vertical;
+    overflow: auto;
+  }
+  
+  #name {
+    @include input_icons_required('name.svg');
+  }
+  #company {
+    @include input_icons_required('company.png');
+  }
+  #email {
+    @include input_icons_required('email.svg');
+  }
+  #phone {
+    @include input_icons('phone.svg');
+  }
+  #message {
+    @include input_icons('message.svg');
+  }
+ 
+  input[type="submit"] {
+    background: #75AEF1;
+    color: white;
+    padding: 2rem;
+    font-size: 2rem;
+    border: 0;
+    border-radius: .25rem;
+    appearance: none;
+  }
+ 
+  .service-option-header {
+    padding: 12px;
+    label {
+      margin-left: 1rem;
+    }
+  }
+  .service-option-description {
+    background: $text_color;
+    color: white;
+    border-radius: 10px;
+    padding: 12px;
+  }
+  
+  select {
+    color: $text_color;
+    display: block;
+		width: 100%;
+    appearance: none;
+    padding: 12px;
+    border: 1px solid #cfd9db;
+  	background-color: #ffffff;
+  	border-radius: .25em;
+  	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08);
+  }
+  
+}

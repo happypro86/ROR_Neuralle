@@ -1,0 +1,3 @@
+.blog-sort
+  = link_to "Most Popular", refinery.blog_most_popular_path, class: ("current" if action_name == "most_popular")
+  = link_to "Latest", refinery.blog_root_path, class: ("current" if action_name == "index")

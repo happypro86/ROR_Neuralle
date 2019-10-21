@@ -1,0 +1,7 @@
+.inner{ class: ("visible" if @order.total_price > 0) }
+  %span
+    Total:
+  %b #{total_price}
+  = form_for @order, url: reset_order_path, remote: true do |f|
+    = button_tag type: :submit, data: {confirm: "The order will be reset. Are you sure?"}, id: "reset-order" do
+      = fa_icon "trash"

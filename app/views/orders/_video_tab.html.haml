@@ -1,0 +1,30 @@
+%section#video-production
+  %h2 Video Production
+
+  .row
+    .col-md-5
+      .sliders-explanation
+        %p Choose what videos you'd like produced. Video production takes your raw media, to create media to suit your format and platform of choice.
+        %h5 What we do
+        %ul
+          %li
+            .icon= fa_icon "bolt"
+            .text Concept Creation
+          %li
+            .icon= fa_icon "edit"
+            .text Draft Concept
+          %li
+            .icon= fa_icon "list-ul"
+            .text Review & Revisions
+          %li
+            .icon= fa_icon "flag"
+            .text Final Concept
+          %li
+            .icon= fa_icon "music"
+            .text Royalty Free Song Included
+        .example
+          = link_to "See a video example", "https://www.instagram.com/p/BaV1zDSBEOs/?taken-by=neuralle_", target: "_blank"
+
+    .col-md-7#video-sliders.sliders-wrapper
+      = render "orders/video_sliders"
+      .clearfix

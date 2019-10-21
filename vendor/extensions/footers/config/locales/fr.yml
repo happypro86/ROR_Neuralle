@@ -1,0 +1,29 @@
+fr:
+  refinery:
+    plugins:
+      footers:
+        title: Footers
+    footers:
+      admin:
+        footers:
+          actions:
+            create_new: Créer un(e) nouve(au/l/lle) Footer
+            reorder: Réordonner les Footers
+            reorder_done: Fin de réordonnancement des Footers
+          records:
+            title: Footers
+            sorry_no_results: "Désolé ! Aucun résultat."
+            no_items_yet: 'Il n''y a actuellement aucun(e) Footer. Cliquer sur "Créer un(e) nouve(au/l/lle) Footer" pour créer votre premi(er/ère) footer.'
+          footer:
+            view_live_html: Voir ce(t/tte) footer <br/><em>(Ouvre une nouvelle fenêtre)</em>
+            edit: Modifier ce(t/tte) footer
+            delete: Supprimer définitivement ce(t/tte) footer
+      footers:
+        show:
+          other: Autres Footers
+  activerecord:
+    attributes:
+      'refinery/footers/footer':
+        title: Title
+        link: Link
+        icon: Icon

@@ -1,0 +1,32 @@
+- description_tag "A media company built to unleash your content production and true potential"
+
+#index
+  .sliders
+    = render 'sliders'
+
+  #body_content
+    - if @posts.any?
+      %section#blog_posts
+        .container
+          = render "/refinery/blog/shared/full_width_post", post: @recent_post
+          .row
+            = render :partial => "/refinery/blog/shared/post", collection: @posts.first(4)
+          .clearfix
+
+    %section#featured.logos-list
+      %h3.media-heading As seen in:
+      .logos
+        .outer
+          = image_tag "featured/startup_daily_logo.png"
+        .outer
+          = image_tag "featured/the_australian_logo.png"
+        .outer
+          = image_tag "featured/startup_smart_logo.png"
+
+    %section.subscribtion-form
+      .container
+        .row
+          .col-lg-7.col-md-6.text
+            %h2 Join 90% of our audience. Have new episodes and Neuralle Media bonus deals emailed to you.
+          .col-lg-5.col-md-6#mc_embed_signup
+            = render "shared/mailchimp_form", action: "//neuralle.us10.list-manage.com/subscribe/post?u=c7a21948a398f006f046c5731&id=5cff14c3b7", key: "b_c7a21948a398f006f046c5731_5cff14c3b7"

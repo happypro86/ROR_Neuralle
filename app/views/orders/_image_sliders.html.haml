@@ -1,0 +1,7 @@
+- @image_products.each do |i|
+  %h4= i.name
+  = render "orders/quantity_slider", product: i, quantity: 30, step: 1, money: false
+  .clearfix
+
+#visual-social-distribution.social-distribution
+  = render "orders/visual_social_distribution"

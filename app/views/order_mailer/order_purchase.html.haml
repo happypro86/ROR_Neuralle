@@ -1,0 +1,226 @@
+= render "order_mailer/email_styles"
+
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+  %body
+
+    %div#background
+      %table#main-content{ cellspacing: "0", cellpadding: "0" }
+        %tbody
+          %tr
+            %td
+              -# = image_tag "/narrow_mail_header.png"
+              = image_tag (attachments['narrow_mail_header.png'].url)
+          %tr
+            %td{ style: "padding: 40px 15px 0" }
+
+              %h1 Order information
+
+              %table#price{ cellspacing: "0", cellpadding: "0" }
+                %tbody
+                  %tr
+                    %th Total price
+                    %th Frequency
+                  %tr
+                    %td #{ total_price }
+                    %td #{ @order.subscription_type == 1 ? "Once Off" : "Monthly" }
+
+              %p#discount-header
+                Discount applied: <b>#{@order.discount_code_applied ? "Yes (#{@order.discount_code})" : "No"}</b>
+
+          %tr
+            %td{ style: "padding: 0" }
+
+              #order-items-wrapper
+                %h2 Order contains
+
+                %table#order-items{ cellspacing: "0", cellpadding: "0" }
+                  %tbody
+
+                    - if podcast_order_items.present?
+                      %tr
+                        %td
+                          %h3 Podcast Services
+                      %tr
+                        %td= podcast_setup_product.name
+                        %td.quantity 1
+                        %td.price= formatted_price_with_symbol(podcast_setup_product.price)
+                      - podcast_order_items.each do |order_item|
+                        %tr
+                          %td= review_product_with_duration(order_item)
+                          %td.quantity= review_product_quantity(order_item)
+                          %td.price= review_product_price(order_item)
+
+                    - if video_order_items.present?
+                      %tr
+                        %td
+                          %h3 Video Content Services
+                      %tr
+                        %td= visual_setup_product.name
+                        %td.quantity 1
+                        %td.price= formatted_price_with_symbol(visual_setup_product.price)
+                      - video_order_items.each do |order_item|
+                        %tr
+                          %td= review_product_with_duration(order_item)
+                          %td.quantity= review_product_quantity(order_item)
+                          %td.price= review_product_price(order_item)
+                        - if order_item.format_horizontal.present?
+                          %tr
+                            %td.sub Horizontal
+                        - if order_item.format_vertical.present?
+                          %tr
+                            %td.sub Vertical
+                        - if order_item.format_square.present?
+                          %tr
+                            %td.sub Square
+                        - if order_item.format_custom.present?
+                          %tr
+                            %td.sub Custom
+
+                    - if image_order_items.present?
+                      %tr
+                        %td
+                          %h3 Graphic Design Services
+                      - if video_order_items.blank?
+                        %tr
+                          %td= visual_setup_product.name
+                          %td.quantity 1
+                          %td.price= formatted_price_with_symbol(visual_setup_product.price)
+                      - image_order_items.each do |order_item|
+                        %tr
+                          %td= review_product(order_item)
+                          %td.quantity= review_product_quantity(order_item)
+                          %td.price= review_product_price(order_item)
+
+
+                    - if (video_distribution_order_items.present? && video_order_items.present?) || (visual_distribution_order_items.present? && image_order_items.present?)
+                      %tr
+                        %td
+                          %h3 Distribution Services
+                      - if video_distribution_order_items.present? && video_order_items.present?
+                        %tr
+                          %td Video
+                          %td.quantity= video_order_item.quantity
+                          %td.price= review_video_distribution_product_price
+                        - video_distribution_order_items.each do |order_item|
+                          %tr
+                            %td.sub= order_item.product.name
+                      - if visual_distribution_order_items.present? && image_order_items.present?
+                        %tr
+                          %td Visual
+                          %td.quantity= image_order_items_quantity
+                          %td.price= review_visual_distribution_product_price
+                        - visual_distribution_order_items.each do |order_item|
+                          %tr
+                            %td.sub= order_item.product.name
+
+                - if @order.discount_code_applied
+                  %p#discount Discount applied
+
+          %tr#customer-info
+            %td{ colspan: "2", style: "text-align: left; padding: 15px 15px 10px;" }
+              #customer-info
+                .inner
+                  %h2 Customer info
+                  %p Name: <b>#{@order.try(:name)}</b>
+                  %p Email: <b>#{@order.try(:email)}</b>
+                  - if @order.company.present?
+                    %p Company: <b>#{@order.try(:company)}</b>
+                  %p Phone: <b>#{@order.try(:phone_number)}</b>
+                  - if @order.country.present?
+                    %p Country: <b>#{country_name(@order.try(:country))}</b>
+
+                  %p Type: <b>#{order_specifics_business}</b>
+                  %p Goal: <b>#{order_specifics_goal}</b>
+                  %p Regularity: <b>#{order_specifics_regularity}</b>
+                  %p Style guide? <b>#{order_specifics_style}</b>
+
+                  - if additional_services?
+                    %br
+                    %h2 Additional services
+                    - if podcast_host_present?
+                      %p Podcast host budget: <b>A$#{ podcast_host_order_item.footage_per_hour } / hour</b>
+                    - if videographer_hire_order_item.duration > 0
+                      %p Video footage duration: <b>#{ videographer_hire_order_item.duration } hours</b>
+                      %p Video footage budget: <b>A$#{ videographer_hire_order_item.footage_per_hour } / hour</b>
+
+-# %h3 Order information
+-#
+-# %p Frequency: #{ @order.subscription_type == 1 ? "Once Off" : "Monthly" }
+-# %p Total price: #{total_price}
+-# %p Discount applied: #{@order.discount_code_applied ? "Yes (#{@order.discount_code})" : "No"}
+-#
+-# %br
+-#
+-# - if podcast_order_items.present?
+-#   %h4 Podcast Services
+-#   %ul
+-#     %li= podcast_setup_product.name
+-#     - podcast_order_items.each do |order_item|
+-#       %li #{ review_product_with_duration(order_item) } * #{ review_product_quantity(order_item) }
+-#
+-# - if video_order_items.present?
+-#   %h4 Video Content Services
+-#   %ul
+-#     %li= visual_setup_product.name
+-#     - video_order_items.each do |order_item|
+-#       %li #{ review_product_with_duration(order_item) } * #{ review_product_quantity(order_item) }
+-#       %ul
+-#         - if order_item.format_horizontal.present?
+-#           %li Horizontal
+-#         - if order_item.format_vertical.present?
+-#           %li Vertical
+-#         - if order_item.format_square.present?
+-#           %li Square
+-#         - if order_item.format_custom.present?
+-#           %li Custom
+-#
+-# - if image_order_items.present?
+-#   %h4 Graphic Design Services
+-#   %ul
+-#     - if video_order_items.blank?
+-#       %li= visual_setup_product.name
+-#     - image_order_items.each do |order_item|
+-#       %li #{ review_product(order_item) } * #{ review_product_quantity(order_item) }
+-#
+-# - if (video_distribution_order_items.present? && video_order_items.present?) || (visual_distribution_order_items.present? && image_order_items.present?)
+-#   %h4 Distribution Services
+-#   - if video_distribution_order_items.present? && video_order_items.present?
+-#     %ul
+-#       %li Video * #{ video_order_item.quantity }
+-#       %ul
+-#         - video_distribution_order_items.each do |order_item|
+-#           %li= order_item.product.name
+-#   - if visual_distribution_order_items.present? && image_order_items.present?
+-#     %ul
+-#       %li Visual * #{ image_order_item.quantity }
+-#       %ul
+-#         - visual_distribution_order_items.each do |order_item|
+-#           %li= order_item.product.name
+-#
+-# %br
+-#
+-# %h3 Brief info
+-# %p Name: <b>#{@order.try(:name)}</b>
+-# %p Email: <b>#{@order.try(:email)}</b>
+-# - if @order.company.present?
+-#   %p Company: <b>#{@order.try(:company)}</b>
+-# %p Phone: <b>#{@order.try(:phone_number)}</b>
+-# - if @order.country.present?
+-#   %p Country: <b>#{country_name(@order.try(:country))}</b>
+-#
+-# %p Type: <b>#{order_specifics_business}</b>
+-# %p Goal: <b>#{order_specifics_goal}</b>
+-# %p Regularity: <b>#{order_specifics_regularity}</b>
+-# %p Style guide? <b>#{order_specifics_style}</b>
+-#
+-# - if additional_services?
+-#   %br
+-#   %h3 Additional services
+-#   - if podcast_host_present?
+-#     %p Podcast host budget: <b>A$#{ podcast_host_order_item.footage_per_hour } / hour</b>
+-#   - if videographer_hire_order_item.duration > 0
+-#     %p Video footage duration: <b>#{ videographer_hire_order_item.duration } hours</b>
+-#     %p Video footage budget: <b>A$#{ videographer_hire_order_item.footage_per_hour } / hour</b>

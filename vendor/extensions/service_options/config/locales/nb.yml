@@ -1,0 +1,28 @@
+nb:
+  refinery:
+    plugins:
+      service_options:
+        title: Service Options
+    service_options:
+      admin:
+        service_options:
+          actions:
+            create_new: Lag en ny Service Option
+            reorder: Endre rekkefølgen på Service Options
+            reorder_done: Ferdig å endre rekkefølgen Service Options
+          records:
+            title: Service Options
+            sorry_no_results: Beklager! Vi fant ikke noen resultater.
+            no_items_yet: Det er ingen Service Options enda. Klikk på "Lag en ny Service Option" for å legge til din første service option.
+          service_option:
+            view_live_html: Vis hvordan denne service option ser ut offentlig <br/><em>(åpner i et nytt vindu)</em>
+            edit: Rediger denne service option
+            delete: Fjern denne service option permanent
+      service_options:
+        show:
+          other: Andre Service Options
+  activerecord:
+    attributes:
+      'refinery/service_options/service_option':
+        title: Title
+        description: Description

@@ -1,0 +1,31 @@
+.modal-dialog
+  .modal-content
+    %button.close{ "aria-label" => "Close", "data-dismiss" => "modal", :type => "button" }
+      %span{ "aria-hidden" => "true" }
+        = fa_icon "close"
+
+    .modal-body
+      .thankyou
+        %h3 Thank you!
+        %p We’ll call you as soon as possible.
+        .signature
+          = image_tag "neuralle_logo_min.gif"
+          %p.small ~ Neuralle Media Team
+
+      .form
+        %h1 Talk to a Strategist
+        %p Need some help? Book in a consultation to talk to one of our strategists, who will be able to answer all of your questions and lock in the perfect solution for you.
+        = form_tag lead_capture_path, remote: true do
+          = hidden_field_tag :address
+          .col-xs-12
+            = text_field_tag :name, nil, class: "form-control", placeholder: "Name", required: true
+          .col-xs-12
+            = email_field_tag :email, nil, class: "form-control", placeholder: "Email", required: true
+          .col-xs-12
+            = phone_field_tag :phone, nil, class: "form-control", placeholder: "Phone number"
+
+          .signature
+            = image_tag "neuralle_logo_min.gif"
+            %p.small ~ Neuralle Media Team
+
+          = submit_tag "Book Free Consult", class: "btn uppercase bold"

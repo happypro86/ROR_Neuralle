@@ -1,0 +1,30 @@
+<%= form_for [refinery, :service_options_admin, @service_option] do |f| -%>
+  <%= render '/refinery/admin/error_messages',
+              :object => @service_option,
+              :include_object_name => true %>
+
+  <div class='field'>
+    <%= f.label :title -%>
+    <%= f.text_field :title, :class => 'larger widest' -%>
+  </div>
+
+  <div class='field'>
+    <%= render '/refinery/admin/wysiwyg',
+                :f => f,
+                :fields => [:description],
+                :object => "service_options/service_option" -%>
+  </div>
+
+  <%= render '/refinery/admin/form_actions', :f => f,
+             :continue_editing => false,
+             :delete_title => t('delete', :scope => 'refinery.service_options.admin.service_options.service_option'),
+             :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @service_option.title) -%>
+<% end -%>
+
+<% content_for :javascripts do -%>
+  <script>
+    $(document).ready(function(){
+      page_options.init(false, '', '');
+    });
+  </script>
+<% end -%>

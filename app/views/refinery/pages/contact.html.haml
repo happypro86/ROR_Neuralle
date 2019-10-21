@@ -1,0 +1,38 @@
+.container
+  .row
+    = flash_messages
+  = render '/refinery/content_page'
+  .row.contact-page
+    %hr/
+    .col-md-8.col-md-offset-2
+      = form_tag("/contact/submit?returnTo=#{request.fullpath}", method: 'post', class: 'contact-form') do
+        .field.row.service-options
+          %h3 Select service
+          - @service_options.each do |service_option|
+            .col-md-6
+              .row.service-option-header
+                = check_box_tag 'service_options[]', service_option.id, false, {:id => "service_options__#{service_option.id}"}
+                = label_tag "service_options[][#{service_option.id}]", service_option.title
+                %span.expand-icon.fa.fa-plus
+              .row.service-option-description{:style => "display:none;"}
+                %p= raw(service_option.description)
+        .field.row
+          %h3 Name
+          = text_field_tag :name, nil, :required => true
+        .field.row
+          %h3 Company
+          = text_field_tag :company, nil, :required => true
+        .field.row
+          %h3 Email
+          = email_field_tag :email, nil, :required => true
+        .field.row
+          %h3 Phone
+          = phone_field_tag :phone
+        .row
+          %h3 Preferred contact time
+          = render 'form_calendar'
+        .field.row
+          %h3 Message
+          = text_area_tag :message
+        .field.row
+          = submit_tag 'Send', {:class => 'pull-right'}

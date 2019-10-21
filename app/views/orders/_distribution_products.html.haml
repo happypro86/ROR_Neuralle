@@ -1,0 +1,7 @@
+- products.each do |product|
+  .distribution-product
+    = form_for order_item(product.id), remote: true do |f|
+      = f.hidden_field :product_id, value: product.id
+      = label_tag "order_item_quantity_#{product.id}" do
+        = fa_icon product.name.downcase
+        = f.check_box :quantity, {id: "order_item_quantity_#{product.id}"}, 1, 0

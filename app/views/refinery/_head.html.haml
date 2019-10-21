@@ -1,0 +1,18 @@
+%meta{:charset => "#{Rails.application.config.encoding}"}/
+/[if IE] <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+%title= content_for?(:title) ? yield(:title) : "Neuralle | Content Production Customised"
+
+- if content_for?(:description_tag) 
+  %meta{name: "description", content: yield(:description_tag)}
+- else 
+  = raw(%(<meta name="description" content="#{@meta.meta_description.truncate(100)}" />)) if @meta.meta_description.present?
+= raw %(<link rel="canonical" href="#{request.protocol}#{request.host_with_port}#{@canonical}" />) if @canonical.present?
+
+-# = csrf_meta_tags if Refinery::Core.authenticity_token_on_frontend
+-# = yield :meta
+
+= stylesheet_link_tag "application"
+= yield :stylesheets
+
+= render '/refinery/google_analytics'

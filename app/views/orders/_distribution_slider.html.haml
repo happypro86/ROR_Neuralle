@@ -1,0 +1,9 @@
+.clearfix
+.slider-wrapper
+  .slider-info
+    %p.slider-title= fa_icon product.name.downcase, class: ("active" if product.order_items.take.quantity > 0)
+  = form_for order_item(product.id), remote: true do |f|
+    = f.hidden_field :product_id, value: product.id
+    = f.text_field :quantity, class: "product-slider", "data-slider-min"=>"0", "data-slider-max"=>quantity, "data-slider-step"=>"1", "data-slider-value"=>order_item_quantity(product.id), "data-slider-handle"=>"custom", "data-slider-tooltip"=>"hide", "data-price"=>set_discount(product.price, false)
+  %p.slider-total #{formatted_price_with_symbol(product.price * order_item_quantity(product.id))}
+  .clearfix

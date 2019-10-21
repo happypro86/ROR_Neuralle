@@ -1,0 +1,23 @@
+.pages_page.show_action {
+
+  .inner > *:first-child {
+    margin-top: 0;
+  }
+
+  #body_content {
+    padding-bottom: 90px;
+    max-width: 800px;
+    margin: 0 auto;
+
+    @media(max-width: 449px) {
+      padding-bottom: 80px;
+    }
+  }
+
+  #mc_embed_signup_scroll  {
+    > h1:first-child, > h2:first-child {
+      margin-top: 0;
+    }
+  }
+
+}

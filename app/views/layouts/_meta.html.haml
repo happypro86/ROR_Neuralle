@@ -1,0 +1,30 @@
+= csrf_meta_tags
+= render "/refinery/html_tag"
+- site_bar = render('/refinery/site_bar', :head => true)
+= render "/refinery/head"
+
+%meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+%meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+%meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
+%meta{:content => "true", :name => "HandheldFriendly"}/
+%meta{:content => "320", :name => "MobileOptimized"}/
+%meta{:content => "on", "http-equiv" => "cleartype"}/
+%meta{:content => "telephone=no", :name => "format-detection"}/
+%link{:href => "https://www.neuralle.com/podcasts.rss", :rel => "alternate", :title => "Uncommon", :type => "application/rss+xml"}/
+
+-# Favicon
+%link{:href => "/apple-touch-icon.png", :rel => "apple-touch-icon", :sizes => "180x180"}/
+%link{:href => "/favicon-32x32.png", :rel => "icon", :sizes => "32x32", :type => "image/png"}/
+%link{:href => "/favicon-16x16.png", :rel => "icon", :sizes => "16x16", :type => "image/png"}/
+%link{:href => "/site.webmanifest", :rel => "manifest"}/
+%link{:color => "#5bbad5", :href => "/safari-pinned-tab.svg", :rel => "mask-icon"}/
+%meta{:content => "#da532c", :name => "msapplication-TileColor"}/
+%meta{:content => "#ffffff", :name => "theme-color"}/
+
+-# Google Fonts
+%link{:href => "https://fonts.googleapis.com/css?family=Open+Sans:300,400|Quicksand|Roboto:400,500,700", :rel => "stylesheet"}/
+
+/ Mailchimp styles
+%link{:href => "//cdn-images.mailchimp.com/embedcode/classic-10_7.css", :rel => "stylesheet", :type => "text/css"}/
+
+= site_bar

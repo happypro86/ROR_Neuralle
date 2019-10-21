@@ -1,0 +1,4 @@
+- if @order.order_valid?
+  = link_to "Review and Pay", checkout_page_path, class: "btn cta blue"
+- else
+  = link_to "Complete the form", "javascript:void(0)", class: "btn cta blue disabled", disabled: true

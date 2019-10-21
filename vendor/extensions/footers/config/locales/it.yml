@@ -1,0 +1,29 @@
+it:
+  refinery:
+    plugins:
+      footers:
+        title: Footers
+    footers:
+      admin:
+        footers:
+          actions:
+            create_new: Aggiungi Nuovo Footer
+            reorder: Riordina Footers
+            reorder_done: Termina il Riordino di Footers
+          records:
+            title: Footers
+            sorry_no_results: "Spiacenti! Nessun risultato trovato"
+            no_items_yet: Non ci sono ancora Footers. Clicca "Aggiungi Nuovo Footer" per aggiungere il tuo primo footer.
+          footer:
+            view_live_html: Guarda live questo footer <br/><em>(apre una nuova finestra)</em>
+            edit: Modifica questo footer
+            delete: Rimuovi per sempre questo footer
+      footers:
+        show:
+          other: Altri Footers
+  activerecord:
+    attributes:
+      'refinery/footers/footer':
+        title: Title
+        link: Link
+        icon: Icon

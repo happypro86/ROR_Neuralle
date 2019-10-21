@@ -1,0 +1,124 @@
+- if podcast_order_items.present?
+  %hr
+  .product.heading
+    %span.name Podcast Services
+  .clearfix
+  %hr
+  .product
+    %span.name
+      = podcast_setup_product.name
+      .small Each content or podcast piece requires significant hours in setup time, this cost ensures your production is set up correctly.
+    %span.price
+      = formatted_price_with_symbol(podcast_setup_product.price)
+  .clearfix
+  - podcast_order_items.each do |order_item|
+    %hr
+    .product
+      %span.name= review_product_with_duration(order_item)
+      %span.price= review_product_price(order_item)
+      %span.quantity= review_product_quantity(order_item)
+    .clearfix
+
+- if video_order_items.present?
+  %hr
+  .product.heading
+    %span.name Video Content Services
+  .clearfix
+  %hr
+  .product
+    %span.name
+      = visual_setup_product.name
+      .small Each content or podcast piece requires significant hours in setup time, this cost ensures your production is set up correctly.
+    %span.price
+      = formatted_price_with_symbol(visual_setup_product.price)
+  .clearfix
+  - video_order_items.each do |order_item|
+    %hr
+    .product
+      %span.name= review_product_with_duration(order_item)
+      %span.price= review_product_price(order_item)
+      %span.quantity= review_product_quantity(order_item)
+    %ul
+      - if order_item.format_horizontal.present?
+        .product
+          %li.name.sub Horizontal
+      - if order_item.format_vertical.present?
+        .product
+          %li.name.sub Vertical
+      - if order_item.format_square.present?
+        .product
+          %li.name.sub Square
+      - if order_item.format_custom.present?
+        .product
+          %li.name.sub Custom
+    .clearfix
+
+- if image_order_items.present?
+  %hr
+  .product.heading
+    %span.name Graphic Design Services
+  .clearfix
+  - if video_order_items.blank?
+    %hr
+    .product
+      %span.name
+        = visual_setup_product.name
+        .small Each content or podcast piece requires significant hours in setup time, this cost ensures your production is set up correctly.
+      %span.price
+        = formatted_price_with_symbol(visual_setup_product.price)
+  - image_order_items.each do |order_item|
+    %hr
+    .product
+      %span.name= review_product(order_item)
+      %span.price= review_product_price(order_item)
+      %span.quantity= review_product_quantity(order_item)
+    .clearfix
+
+- if (video_distribution_order_items.present? && video_order_items.present?) || (visual_distribution_order_items.present? && image_order_items.present?)
+  %hr
+  .product.heading
+    %span.name Distribution Services
+  - if video_distribution_order_items.present? && video_order_items.present?
+    %hr
+    .product
+      %span.name Video
+      %span.price= review_video_distribution_product_price
+      %span.quantity= video_order_item.quantity
+    %ul
+      - video_distribution_order_items.each do |order_item|
+        .product
+          %li.name.sub= order_item.product.name
+    .clearfix
+  - if visual_distribution_order_items.present? && image_order_items.present?
+    %hr
+    .product
+      %span.name Visual
+      %span.price= review_visual_distribution_product_price
+      %span.quantity= image_order_items_quantity
+    %ul
+      - visual_distribution_order_items.each do |order_item|
+        .product
+          %li.name.sub= order_item.product.name
+    .clearfix
+
+- if @order.paid && @order.check_discount_code
+  %hr
+  %p#discount-success Discount applied
+- elsif @order.paid
+  .pricing-delimiter
+- elsif @order.check_discount_code
+  %hr
+  %p#discount-success Enjoy your discount!
+- else
+  %hr
+  = form_for @order, remote: true do |f|
+    = f.text_field :discount_code, class: (@order.discount_code.present? ? "form-control discount-wrong" : "form-control"), id: "discount-code", placeholder: "enter discount code"
+
+%hr
+.product.pricing
+  %span.name Payment type
+  %span.type #{ @order.subscription_type == 1 ? "Once off" : "Recurring (monthly)" }
+
+.product.total
+  %span.name Total
+  %span.price= total_price

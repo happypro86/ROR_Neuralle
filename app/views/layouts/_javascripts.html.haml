@@ -1,0 +1,31 @@
+/ Facebook Pixel Code
+:javascript
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '531558353671405');
+  fbq('track', "PageView");
+%noscript
+  %img{:height => "1", :src => "https://www.facebook.com/tr?id=531558353671405&ev=PageView&noscript=1", :style => "display:none", :width => "1"}/
+/ End Facebook Pixel Code
+
+
+/ Twitter universal website tag code
+%script{:src => "//platform.twitter.com/oct.js", :type => "text/javascript"}
+:javascript
+  twttr.conversion.trackPid('nuugx', { tw_sale_amount: 0, tw_order_quantity: 0 });
+%noscript
+  %img{:alt => "", :height => "1", :src => "https://analytics.twitter.com/i/adsct?txn_id=nuugx&p_id=Twitter&tw_sale_amount=0&tw_order_quantity=0", :style => "display:none;", :width => "1"}/
+  %img{:alt => "", :height => "1", :src => "//t.co/i/adsct?txn_id=nuugx&p_id=Twitter&tw_sale_amount=0&tw_order_quantity=0", :style => "display:none;", :width => "1"}/
+/ End Twitter universal website tag code
+
+
+/ SumoMe Code
+%script{:async => ""}
+  (function(s,u,m,o,j,v){j=u.createElement(m);v=u.getElementsByTagName(m)[0];j.async=1;j.src=o;j.dataset.sumoSiteId='95f67efcbc3f001f4653c4591d749892733122a4ed28cb55f6e04967957e7df2';v.parentNode.insertBefore(j,v)})(window,document,'script','//load.sumo.com/');
+/ End SumoMe Code
+
+
+= javascript_include_tag 'application.js'

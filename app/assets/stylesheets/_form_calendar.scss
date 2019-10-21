@@ -1,0 +1,60 @@
+$light_gray: #cfd9db;
+
+.form-calendar-wrapper {
+  border: 1px solid $light_gray;
+  border-radius: .25em;
+  
+  .form-calendar-header {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+    .goToPrevious, .month, .goToNext {
+      display: inline;
+    }
+    .goToPrevious, .goToNext {
+      font-size: 3rem;
+      cursor: pointer;
+    }
+    .month {
+      font-size: 3rem;
+    }
+  }
+  .form-calendar-days {
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 5px;
+    
+    .calendar-day {
+      flex: 0 1 auto;
+      text-align: right;
+      width: calc((100% / 7) - 10px);
+      height: 3.5rem;
+      margin: 5px;
+      color: $light_gray;
+      border-top: 1px solid $light_gray;
+      border-left: 1px solid transparent;
+      border-right: 1px solid transparent;
+      border-bottom: 1px solid transparent;
+      
+      &.selectable {
+        color: gray;
+        border-top: 1px solid gray;
+        cursor: pointer;
+        &:hover {
+          background: $light_gray;
+        }
+      }
+      &.selected {
+        background: $light_gray;
+        border: 1px solid gray;
+      }
+    }
+  }
+  
+  .time-form {
+    margin-top: 7rem;
+  }
+}

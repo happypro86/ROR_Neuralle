@@ -1,0 +1,106 @@
+- title_tag "Podcast & Video Production, Automated | Neuralle"
+- description_tag "Neuralle Media is Affordable and Effortless Content Production"
+
+#media
+  .masthead
+    .dimming
+    .container
+      .text
+        %h1 We grow customers, through&nbsp;content
+        %h2 Neuralle specialises in audio & video content that&nbsp;generates&nbsp;growth.
+        .btn-wrapper
+          = link_to 'Check out Pricing', pricing_page_path, class: 'btn bold cta green'
+          %span or
+          = link_to 'Talk to a Strategist', callrequest_path, class: 'btn bold cta green'
+      .clearfix
+
+  %section#apps-list
+    .container
+      %h2 A customisable selection of content options
+      %h4 Built for companies, by media practitioners
+      = render "static_pages/media/apps"
+
+  %section#what
+    .container
+      %h1 So how does it work?
+      = render "static_pages/media/what_carousel"
+
+  - if @instagram.present?
+    %section#instagram-carousel
+      .container
+        .narrow
+          %h2 Check out our feed
+          = render "static_pages/media/instagram_media_carousel"
+
+  %section#who
+    .container
+      %h2 Neuralle is for...
+      %p Business owners, content teams, and freelancers of all shapes and sizes. Our service's flexibility helps you deliver unique and engaging content with an offering that is both affordable and effortless.
+      = link_to "Common Questions", "javascript:void(0)", class: "btn cta", id: "faq-toggle"
+      #faq
+        %h2 Common Questions
+        %h4 What is Neuralle Media?
+        %p Neuralle media is a quick, easy to use, content media and distribution service. Similar to an eCommerce or SaaS system we’ve built our infrastructure so you can quickly price up an option and have the ultimate solution confirmed in 15-20 minutes.
+
+        %h4 How do I use Neuralle Media?
+        %p Simply choose your preferred monthly or one-off option. Then select how much content you’d like produced, distributed or how many social channels managed at
+        = link_to 'on our Pricing page.', pricing_page_path
+
+        %h4 What methods can I pay with?
+        %p We offer payment in Mastercard, VISA, AMEX, Bitcoin and Bitcoin Cash.
+
+        %h4 What happens after payment?
+        %p Our team will get to work on transforming your brief into a digestible piece of work for our freelancers, providing you with an ETA on delivery via email.
+        %p For monthly bundle clients, we will set up your private Slack Channel & Google Drives, making contact within 24 hours.
+
+  %section#why
+    .container
+      = render "static_pages/media/media_carousel"
+
+  %section#work-with.logos-list
+    %h2 Who we've worked with
+    .container
+      .logos
+        - about_companies_logos.each do |company_logo|
+          .outer
+            = image_tag "media/#{company_logo}", id: "#{image_id(company_logo)}"
+        -# .clearfix
+
+      -# .logos
+        = link_to "https://www.developmentready.com.au/", target: "_blank" do
+          = image_tag "media/development_ready_logo.png"
+        = link_to podcast_page_path, target: "_blank" do
+          = image_tag "media/uncommon_logo.png"
+        = link_to "https://www.gomarkets.com.au/", target: "_blank" do
+          = image_tag "media/go_markets_logo.png"
+        = link_to "https://www.infinitywellnesscentre.com.au/", target: "_blank" do
+          = image_tag "media/infinity_logo.png"
+        = link_to "https://www.infinitywellnesscentre.com.au/", target: "_blank" do
+          = image_tag "media/coinjar_logo.svg"
+
+      -# #companies-list
+
+  %section.subscribtion-form
+    .container
+      .row
+        .col-sm-6.image
+          = image_tag "headphones.jpg"
+        .col-md-5.col-sm-6#mc_embed_signup
+          %h4 Learn How to Create Podcasts & Video, to help grow your business.
+          = render "shared/mailchimp_form", action: "https://neuralle.us10.list-manage.com/subscribe/post?u=c7a21948a398f006f046c5731&amp;id=f6f3bca6ff", key: "b_c7a21948a398f006f046c5731_f6f3bca6f"
+        .clearfix
+
+  %section#about-us
+    .container
+      .centered-text
+        %h2 About Us
+        %p Hello, we're Jordan&nbsp;Michaelides and Lauren&nbsp;Lopatko, co-founders of&nbsp;Neuralle and&nbsp;partners&nbsp;in&nbsp;life.
+        %p We are “High&nbsp;School&nbsp;sweethearts” who bonded immediately over a&nbsp;passion for&nbsp;design, persuasion, new&nbsp;ideas and&nbsp;unique&nbsp;experiences. We&nbsp;stand here&nbsp;today, 10&nbsp;years&nbsp;later, as&nbsp;partners in&nbsp;crime with a&nbsp;media&nbsp;business that&nbsp;utilises the&nbsp;best of&nbsp;both&nbsp;of&nbsp;us – for&nbsp;you.
+      = render "roles"
+
+
+
+
+  -# %section#testimonials
+    .container
+      = render "static_pages/media/testimonials"

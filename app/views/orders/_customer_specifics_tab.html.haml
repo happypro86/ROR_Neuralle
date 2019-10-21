@@ -1,0 +1,51 @@
+%section#customer-specifics
+  %h2 First let's understand your situation
+
+  #customer-info-form
+    = form_for @order, remote: true do |f|
+      = f.email_field :email, class: 'form-control', placeholder: 'Email *'
+      = f.text_field :name, class: 'form-control', placeholder: 'Name *'
+      = f.text_field :company, class: 'form-control', placeholder: 'Company'
+      = f.country_select :country, {}, { class: 'form-control country', placeholder: 'Country' }
+      = f.phone_field :phone_number, class: 'form-control phone', placeholder: 'Phone number *'
+      .clearfix
+
+  = form_for @order, remote: true do |f|
+
+    .question
+      %h4 What type of business or&nbsp;creator&nbsp;are&nbsp;you?
+      = f.label :specifics_business_1 do
+        %span B2B
+        = f.radio_button :specifics_business, '1', checked: @order.specifics_business == 1
+      = f.label :specifics_business_2 do
+        %span B2C
+        = f.radio_button :specifics_business, '2', checked: @order.specifics_business == 2
+    .question
+      %h4 What is your&nbsp;goal?
+      = f.label :specifics_goal_1 do
+        %span Build/grow an audience
+        = f.radio_button :specifics_goal, '1', checked: @order.specifics_goal == 1
+      = f.label :specifics_goal_2 do
+        %span Run a specific campaign
+        = f.radio_button :specifics_goal, '2', checked: @order.specifics_goal == 2
+    .question
+      %h4 How regularly do you want to&nbsp;create&nbsp;content?
+      = f.label :specifics_regularity_1 do
+        %span Monthly
+        = f.radio_button :specifics_regularity, '1', checked: @order.specifics_regularity == 1
+      = f.label :specifics_regularity_2 do
+        %span Once Off Campaign or Test Run
+        = f.radio_button :specifics_regularity, '2', checked: @order.specifics_regularity == 2
+    .question
+      %h4 Do you have an existing brand&nbsp;style&nbsp;guide?
+      = f.label :specifics_style_1 do
+        %span Yes
+        = f.radio_button :specifics_style, '1', checked: @order.specifics_style == 1
+      = f.label :specifics_style_2 do
+        %span No
+        = f.radio_button :specifics_style, '2', checked: @order.specifics_style == 2
+      = f.label :specifics_style_3 do
+        %span I don't know
+        = f.radio_button :specifics_style, '3', checked: @order.specifics_style == 3
+
+        .clearfix

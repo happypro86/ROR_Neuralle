@@ -1,0 +1,31 @@
+= form_for @brief_request, remote: true do |f|
+  .row
+    .col-sm-6
+      = f.text_field :name, class: 'form-control', placeholder: 'Name *'
+    .col-sm-6
+      = f.text_field :company, class: 'form-control', placeholder: 'Company'
+
+  .row
+    .col-sm-6
+      = f.email_field :email, class: 'form-control', placeholder: 'Email *'
+    .col-sm-6
+      = f.phone_field :phone_number, class: 'form-control', placeholder: 'Phone number *'
+
+  .row
+    .col-sm-6
+      = f.country_select :country, { include_blank: 'Country *' }, { class: 'form-control' }
+    .col-sm-6
+      = f.text_field :industry, class: 'form-control', placeholder: 'Industry'
+
+  .row
+    .col-sm-12
+      = f.text_area :brief_description, class: 'form-control', rows: 4, placeholder: "Describe your organisation and target audience, to help us understand your goals. *"
+    .col-sm-12
+      = f.text_area :design_style, class: 'form-control', rows: 4, placeholder: "Describe the design style you're looking for. For audio content, please make references to your favourite style of audio podcasts. For visual and video design, make sure to reference your favourite video styles with examples - include references to colour and style attributes. *"
+    .col-sm-12
+      = f.text_area :further_notes, class: 'form-control', rows: 4, placeholder: "Any further notes or concerns we should be aware of?"
+
+  .row
+    .col-sm-12
+      = f.label :brief_file, "Upload sample material"
+      = f.file_field :brief_file

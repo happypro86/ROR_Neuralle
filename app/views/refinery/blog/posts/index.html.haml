@@ -1,0 +1,30 @@
+-# - content_for :stylesheets, stylesheet_link_tag('refinery/blog/frontend')
+- title_tag "Read Uncommon Stories | Neuralle"
+- description_tag "Uncover the stories behind our guests"
+
+.blog-index.blog
+  .masthead
+    %h1 Read our blog
+
+  .container
+    - content_for :body do
+      -# .blog-description
+      -#   = raw @page.content_for(first_refinery_page_default_part) if Refinery::Pages.default_parts.any?
+      -#   = render "sort"
+      -# %hr
+
+      - if @posts.any?
+        %section#blog_posts
+          = render "/refinery/blog/shared/full_width_post", post: @recent_post
+          .row
+            - @posts.each do |post|
+              = render "/refinery/blog/shared/post", post: post
+
+          = will_paginate @posts, previous_label: fa_icon("long-arrow-left"), next_label: fa_icon("long-arrow-right"), inner_window: 1, outer_window: 1
+      - else
+        %p= t('.no_blog_articles_yet')
+    - content_for :side_body_prepend do
+      = raw @page.content_for(Refinery::Pages.default_parts.second[:slug])
+    - end if Refinery::Pages.default_parts.many?
+    -# = render '/refinery/blog/shared/body_content_right'
+    = render "/refinery/content_page"

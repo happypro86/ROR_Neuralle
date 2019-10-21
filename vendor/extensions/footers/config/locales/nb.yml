@@ -1,0 +1,29 @@
+nb:
+  refinery:
+    plugins:
+      footers:
+        title: Footers
+    footers:
+      admin:
+        footers:
+          actions:
+            create_new: Lag en ny Footer
+            reorder: Endre rekkefølgen på Footers
+            reorder_done: Ferdig å endre rekkefølgen Footers
+          records:
+            title: Footers
+            sorry_no_results: Beklager! Vi fant ikke noen resultater.
+            no_items_yet: Det er ingen Footers enda. Klikk på "Lag en ny Footer" for å legge til din første footer.
+          footer:
+            view_live_html: Vis hvordan denne footer ser ut offentlig <br/><em>(åpner i et nytt vindu)</em>
+            edit: Rediger denne footer
+            delete: Fjern denne footer permanent
+      footers:
+        show:
+          other: Andre Footers
+  activerecord:
+    attributes:
+      'refinery/footers/footer':
+        title: Title
+        link: Link
+        icon: Icon

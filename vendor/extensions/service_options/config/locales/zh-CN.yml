@@ -1,0 +1,30 @@
+zh-CN:
+  refinery:
+    plugins:
+      service_options:
+        title: Service Options
+    service_options:
+      admin:
+        service_options:
+          actions:
+            create_new: 建立新的 Service Option
+            reorder: 对 Service Options 重新排序
+            reorder_done: 对 Service Options 的重新排序结束
+          records:
+            title: Service Options
+            sorry_no_results: 对不起，未找到结果。 #Sorry! There are no results found.
+
+            # There are no Service Options yet. Click "Add New Service Option" to add your first service option.
+            no_items_yet: 目前没有 Service Options . 点击 "Add New Service Option" 创建一个service option.
+          service_option:
+            view_live_html: 查看 service option 的最新内容.<br/><em>(新窗口中打开)</em>
+            edit: 编辑 service option
+            delete: 永久删除 service option
+      service_options:
+        show:
+          other: 其他 Service Options
+  activerecord:
+    attributes:
+      'refinery/service_options/service_option':
+        title: Title
+        description: Description

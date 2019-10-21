@@ -1,0 +1,49 @@
+#checkout
+  %section#back
+    .container
+
+      .narrow
+        = link_to "/pricing", id: "wizard-prev" do
+          = image_tag 'checkout/amend.svg'
+          Amend my package
+
+        -# #bar.progress
+        -#   .progress-bar{ role: "progressbar", "aria-valuenow" => "0", "aria-valuemin" => "100", "aria-valuemax" => "100", style: "width: 0;" }
+        -# .clearfix
+
+  %section#review
+    .container
+
+      %h2 Your Details
+      .customer-info
+        .details
+          %p= @order.name
+          %p= @order.email
+          %p= @order.company if @order.company
+          %p= @order.phone_number
+          %p= country_name(@order.country)
+        .specifics
+          %p You are: <span>#{order_specifics_business}</span>
+          %p Your goal: <span>#{order_specifics_goal}</span>
+          %p Regularity: <span>#{order_specifics_regularity}</span>
+          %p Do you have a style guide? <span>#{order_specifics_style}</span>
+        .clearfix
+
+        - if additional_services?
+          .additional-services
+            .delimiter
+            %h4 Additional Services
+            %p.small We’ll contact you with options for host or videographer directly.
+            - if podcast_host_present?
+              %p Podcast host budget: <b>A$#{ podcast_host_order_item.footage_per_hour } / hour</b>
+            - if videographer_hire_order_item.duration > 0
+              %p Video footage duration: <b>#{ videographer_hire_order_item.duration } hours</b>
+              %p Video footage budget: <b>A$#{ videographer_hire_order_item.footage_per_hour } / hour</b>
+        .clearfix
+
+      %h2 Your Package
+      #review-list
+        = render "orders/review_list"
+
+  %section#payment-details
+    = render "charges/payment_details"

@@ -1,0 +1,136 @@
+= render "order_mailer/email_styles"
+
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+  %body
+
+    %div#background
+      %table#main-content{ cellspacing: "0", cellpadding: "0" }
+        %tbody
+          %tr
+            %td
+              -# = image_tag "/customer_mail_header.png"
+              = image_tag (attachments['customer_mail_header.png'].url)
+          %tr
+            %td{ style: "padding: 40px 15px 0" }
+
+              %h1 Your order details
+
+              %table#price{ cellspacing: "0", cellpadding: "0" }
+                %tbody
+                  %tr
+                    %th Amount paid
+                    %th Frequency
+                  %tr
+                    %td #{ total_price }
+                    %td #{ @order.subscription_type == 1 ? "Once Off" : "Monthly" }
+
+              %p#email
+                #{ mail_to @email }
+              %p#date= @purchase_time
+
+          %tr
+            %td{ style: "padding: 0" }
+
+              #order-items-wrapper
+                %h2 Order contains
+
+                %table#order-items{ cellspacing: "0", cellpadding: "0" }
+                  %tbody
+
+                    - if podcast_order_items.present?
+                      %tr
+                        %td
+                          %h3 Podcast Services
+                      %tr
+                        %td= podcast_setup_product.name
+                        %td.quantity 1
+                        %td.price= formatted_price_with_symbol(podcast_setup_product.price)
+                      - podcast_order_items.each do |order_item|
+                        %tr
+                          %td= review_product_with_duration(order_item)
+                          %td.quantity= review_product_quantity(order_item)
+                          %td.price= review_product_price(order_item)
+
+                    - if video_order_items.present?
+                      %tr
+                        %td
+                          %h3 Video Content Services
+                      %tr
+                        %td= visual_setup_product.name
+                        %td.quantity 1
+                        %td.price= formatted_price_with_symbol(visual_setup_product.price)
+                      - video_order_items.each do |order_item|
+                        %tr
+                          %td= review_product_with_duration(order_item)
+                          %td.quantity= review_product_quantity(order_item)
+                          %td.price= review_product_price(order_item)
+                        - if order_item.format_horizontal.present?
+                          %tr
+                            %td.sub Horizontal
+                        - if order_item.format_vertical.present?
+                          %tr
+                            %td.sub Vertical
+                        - if order_item.format_square.present?
+                          %tr
+                            %td.sub Square
+                        - if order_item.format_custom.present?
+                          %tr
+                            %td.sub Custom
+
+                    - if image_order_items.present?
+                      %tr
+                        %td
+                          %h3 Graphic Design Services
+                      - if video_order_items.blank?
+                        %tr
+                          %td= visual_setup_product.name
+                          %td.quantity 1
+                          %td.price= formatted_price_with_symbol(visual_setup_product.price)
+                      - image_order_items.each do |order_item|
+                        %tr
+                          %td= review_product(order_item)
+                          %td.quantity= review_product_quantity(order_item)
+                          %td.price= review_product_price(order_item)
+
+
+                    - if (video_distribution_order_items.present? && video_order_items.present?) || (visual_distribution_order_items.present? && image_order_items.present?)
+                      %tr
+                        %td
+                          %h3 Distribution Services
+                      - if video_distribution_order_items.present? && video_order_items.present?
+                        %tr
+                          %td Video
+                          %td.quantity= video_order_item.quantity
+                          %td.price= review_video_distribution_product_price
+                        - video_distribution_order_items.each do |order_item|
+                          %tr
+                            %td.sub= order_item.product.name
+                      - if visual_distribution_order_items.present? && image_order_items.present?
+                        %tr
+                          %td Visual
+                          %td.quantity= image_order_items_quantity
+                          %td.price= review_visual_distribution_product_price
+                        - visual_distribution_order_items.each do |order_item|
+                          %tr
+                            %td.sub= order_item.product.name
+
+          %tr
+            %td{ style: "padding: 25px 15px" }
+              .divider
+
+          %tr
+            %td{ colspan: "2", style: "text-align: left; padding: 0 15px;" }
+              %p.small.mb-10 You're receiving this email because you made a purchase at #{link_to "neuralle.com", "https://neuralle.com"}.
+              %p.small If you have any questions, contact us at #{mail_to "jordan@neuralle.com"} or&nbsp;call&nbsp;at&nbsp;#{ link_to "+61&nbsp;433&nbsp;487&nbsp;494".html_safe, "tel:+61 433 487 494" }.
+
+          %tr
+            %td{ style: "padding: 25px 15px" }
+              .divider
+
+          %tr
+            %td{ colspan: "2", style: "text-align: center; padding: 0 15px 25px;" }
+              %p.small.mb-10 #{link_to "Privacy Policy", "https://www.neuralle.com/privacy-policy"}
+              %p.small &copy; Neuralle Pty Ltd #{Time.now.year}

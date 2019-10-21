@@ -1,0 +1,238 @@
+#index {
+  h1 {
+    padding: 10px 0 20px;
+    font-size: 3.0rem;
+  }
+
+  h2 {
+    color: $tomato;
+    text-align: center;
+    margin: 0 0 40px;
+  }
+
+  section {
+    padding: 45px 0 60px;
+    &.sym {
+      padding: 60px 0;
+    }
+  }
+
+  .sliders {
+    position: relative;
+    margin: 0 0 -60px;
+
+    .blackout {
+      display: none;
+      position: absolute;
+      z-index: 10;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0, transparent 70%);
+    }
+    .caption {
+      position: absolute;
+      z-index: 15;
+      bottom: 15%;
+      left: 5%;
+      color: white;
+      text-align: left;
+      font-size: 1.6rem;
+      max-width: 400px;
+
+      p {
+        margin-bottom: 20px;
+      }
+
+      h2 {
+        color: $white;
+        text-align: left;
+        font-weight: 700;
+        font-size: 3.4rem;
+        margin-bottom: 10px;
+        line-height: 1.3;
+      }
+    }
+
+    .owl-theme .owl-controls {
+      margin-top: 0;
+    }
+
+    .owl-pagination{
+      position: absolute;
+      margin-top: -40px;
+      width: 100%;
+
+      .owl-page span {
+        background: #f6fdfa;
+
+        &.active {
+          background: white;
+        }
+      }
+    }
+
+    .btn-wrapper {
+      text-align: left;
+    }
+
+    @media (max-width: 1399px) {
+      .image {
+        overflow: hidden;
+      }
+      img {
+        max-width: none;
+        width: 1650px;
+        margin-left: 50%;
+        transform: translateX(-50%);
+      }
+      .caption {
+        max-width: 290px;
+      }
+    }
+    @media (max-width: 1199px) {
+      img {
+        width: 1400px;
+      }
+      .caption {
+        max-width: 240px;
+        h2 {
+          font-size: 3rem;
+        }
+      }
+    }
+    @media (max-width: 991px) {
+      .blackout {
+        display: block;
+      }
+    }
+    @media (max-width: 767px) {
+      margin: 0 0 -35px;
+      img {
+        width: 1000px;
+      }
+      .caption {
+        max-width: 50%;
+        left: 25px;
+        h2 {
+          font-size: 2.6rem;
+        }
+      }
+      .blackout {
+        background: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0) 100%);
+      }
+    }
+    @media (max-width: 599px) {
+      .owl-item:first-child {
+        .image {
+          direction: rtl;
+        }
+        img {
+          margin: 0;
+          transform: none;
+        }
+      }
+      .owl-item:nth-child(2) {
+        img {
+          transform: translateX(-68%);
+        }
+      }
+      .owl-item:nth-child(3) {
+        img {
+          transform: translateX(-60%);
+        }
+      }
+      .caption {
+        max-width: 100%;
+        left: 25px;
+        right: 25px;
+        bottom: 55px;
+        h2 {
+          font-size: 2.4rem;
+          margin: 0 0 5px;
+        }
+        p {
+          margin: 0 0 15px;
+        }
+      }
+      .blackout {
+        background: rgba(0, 0, 0, 0.6);
+      }
+    }
+    @media (max-width: 449px) {
+      .btn-wrapper {
+        text-align: center;
+      }
+    }
+  }
+
+  #blog_posts {
+    padding: 0 0 60px;
+
+    @media (max-width: 991px) {
+      padding: 0 0 40px;
+    }
+    @media (max-width: 767px) {
+      padding: 0 0 40px;
+    }
+    @media (max-width: 449px) {
+      padding: 0 0 20px;
+    }
+  }
+
+  .logos-list {
+    padding: 45px 0 30px;
+    .logos {
+      margin: 30px 0 0;
+    }
+  }
+
+  section.subscribtion-form {
+    padding: 70px 0 100px;
+    margin-bottom: 10px;
+
+    h2 {
+      text-align: center;
+      margin: 0 0 30px;
+    }
+    h4 {
+      font-size: 2.1rem;
+      margin: 0 0 15px;
+      font-weight: lighter;
+      text-align: center;
+    }
+    .text {
+      padding: 35px 90px 0 30px;
+    }
+    #mc_embed_signup {
+      margin: 28px 0 0;
+    }
+
+    @media (max-width: 1199px) {
+      padding: 70px 0 90px;
+      h4 {
+        text-align: left;
+      }
+    }
+    @media (max-width: 991px) {
+      padding: 60px 0 80px;
+      h4 {
+        font-size: 2rem;
+        text-align: center;;
+      }
+      .text {
+        padding: 15px 15px 30px;
+      }
+      #mc_embed_signup {
+        margin: 0;
+      }
+    }
+    @media (max-width: 767px) {
+      padding: 60px 0 80px;
+      h4 {
+        font-size: 1.8rem;
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+es:
+  refinery:
+    plugins:
+      service_options:
+        title: Service Options
+#        article: masculino/femenino
+    service_options:
+      admin:
+        service_options:
+          actions:
+            create_new: Crear nuevo service option
+            reorder: Reordenar service options
+            reorder_done: Reordenación de service options completada
+          records:
+            title: Service Options
+            sorry_no_results: Lo siento, no hay resultados
+            no_items_yet: No hay service options todavía. Pulsa en "Crear nuevo Service Option" para crear tu primer service option.
+          service_option:
+            view_live_html: Ver este service option como abierto al público <br/><em>(abre en ventana nueva)</em>
+            edit: Editar este service option
+            delete: Borrar este service option para siempre
+      service_options:
+        show:
+          other: Otros service options
+  activerecord:
+    attributes:
+      'refinery/service_options/service_option':
+        title: Title
+        description: Description

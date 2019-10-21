@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: db
+  username: postgres
+  password: postgres
+
+development:
+  <<: *default
+  database: clascity_development
+
+test:
+  <<: *default
+  database: clascity_test
+
+production:
+  <<: *default
+  database: clascity_production
+  username: clascity
+  password: <%= ENV['DATABASE_PASSWORD'] %>

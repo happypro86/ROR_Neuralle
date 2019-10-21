@@ -1,0 +1,29 @@
+nl:
+  refinery:
+    plugins:
+      footers:
+        title: Footers
+    footers:
+      admin:
+        footers:
+          actions:
+            create_new: Nieuwe Footer toevoegen
+            reorder: De volgorde van de Footers wijzigen
+            reorder_done: Klaar met het wijzingen van de van de Footer-volgorde
+          records:
+            title: Footers
+            sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
+            no_items_yet: Er zijn nog geen Footers. Druk op 'Nieuwe Footer toevoegen' om de eerste toe te voegen.
+          footer:
+            view_live_html: Deze footer op de website bekijken <br/><em>(opent in een nieuw venster)</em>
+            edit: Bewerk deze footer
+            delete: Deze footer definitief verwijderen
+      footers:
+        show:
+          other: Andere Footers
+  activerecord:
+    attributes:
+      'refinery/footers/footer':
+        title: Title
+        link: Link
+        icon: Icon

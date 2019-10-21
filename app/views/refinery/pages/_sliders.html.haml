@@ -1,0 +1,33 @@
+.media-carousel.owl-carousel.owl-theme
+  .item
+    .blackout
+    .image
+      = link_to '/media' do
+        = image_tag "home/media.png"
+    .caption
+      %h2 Neuralle Media
+      %p A media company built to unleash your content production
+      .btn-wrapper
+        = link_to 'Learn More', '/media', class: 'btn btn-danger'
+
+  .item.hide
+    .blackout
+    .image
+      = link_to '/podcast' do
+        = image_tag "home/podcast.png"
+    .caption
+      %h2 Uncommon Podcast
+      %p The Uncommon podcast interviews unique individuals and investigates interesting topics, helping you to build the Uncommon Sense crucial to increasing performance.
+      .btn-wrapper
+        = link_to 'Listen Now', '/podcast', class: 'btn btn-primary'
+
+  .item.hide
+    .blackout
+    .image
+      = link_to '/blog' do
+        = image_tag "home/blog.png"
+    .caption
+      %h2 Blog
+      %p Discover the show notes and written story behind the guests of the Uncommon Podcast
+      .btn-wrapper
+        = link_to 'Read Now', '/blog', class: 'btn btn-success'

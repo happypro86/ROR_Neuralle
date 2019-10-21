@@ -1,0 +1,19 @@
+%section#final-details
+  %h2 Final Details
+
+  #customer-info-form
+    = form_for @order, remote: true do |f|
+      = f.email_field :email, class: 'form-control', placeholder: 'Email *'
+      = f.text_field :name, class: 'form-control', placeholder: 'Name *'
+      = f.text_field :company, class: 'form-control', placeholder: 'Company'
+      = f.country_select :country, {}, { class: 'form-control country', placeholder: 'Country' }
+      = f.phone_field :phone_number, class: 'form-control phone', placeholder: 'Phone number *'
+
+  %p.centered-text Once payment is made, our&nbsp;team will make direct&nbsp;contact and flesh out any specifics to&nbsp;start&nbsp;implementing your&nbsp;production straight&nbsp;away. We&nbsp;typically respond within&nbsp;24&nbsp;hours and aim&nbsp;to&nbsp;start as&nbsp;soon&nbsp;as&nbsp;possible.
+
+  %p.terms
+    By proceeding, you agree to&nbsp;the&nbsp;terms set out in this
+    = link_to service_agreement_page_path, target: "_blank" do
+      Client&nbsp;Service&nbsp;Agreement
+
+      .clearfix

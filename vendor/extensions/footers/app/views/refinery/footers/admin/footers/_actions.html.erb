@@ -1,0 +1,20 @@
+<ul>
+  <% if ::Refinery::Footers::Admin::FootersController.searchable? %>
+    <li>
+      <%= render '/refinery/admin/search', :url => refinery.footers_admin_footers_path %>
+    </li>
+  <% end %>
+  <li>
+    <%= action_label :add, refinery.new_footers_admin_footer_path, t('.create_new') %>
+  </li>
+<% if !searching? && ::Refinery::Footers::Admin::FootersController.sortable? && ::Refinery::Footers::Footer.many? %>
+  <li>
+    <%= action_label :reorder,
+                     refinery.footers_admin_footers_path,
+                     t('.reorder', what:  "Footers"), id: 'reorder_action'%>
+    <%= action_label :reorder_done,
+                     refinery.footers_admin_footers_path,
+                      t('.reorder_done', what: "Footers"), id: 'reorder_action_done', class: 'hidden'%>
+  </li>
+<% end %>
+</ul>

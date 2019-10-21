@@ -1,0 +1,50 @@
+/* image replacements */
+.wym_skin_refinery {
+  .wym_section {
+    li {
+      &.wym_tools_mailchimp, &.wym_tools_class {
+        a {
+          padding-left: 24px;
+        }
+      }
+    }
+    li.wym_tools_mailchimp a {
+      background-color: #5cb85c;
+      border-radius: 8px;
+      color: white !important;
+      padding: 0px 6px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 10px;
+      margin: 0px 5px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #4CAF50;
+      }
+    }
+  }
+}
+
+.ui-dialog {
+  width: 600px !important;
+
+  .ui-dialog-titlebar-close {
+    span {
+      display: inline-block;
+    }
+    &:hover {
+      padding-top: 2px;
+      cursor: pointer;
+    }
+  }
+}
+
+.ui-corner-all {
+  border-radius: 0px !important;
+}
+
+.mailchimp-lists {
+  padding-left: 10px;
+}

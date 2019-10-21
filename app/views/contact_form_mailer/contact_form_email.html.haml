@@ -1,0 +1,32 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+  %body
+    %h1 Someone wants to talk to you
+    %table
+      %tbody
+        %tr
+          %td Service Options
+          %td= @service_option_description
+        %tr
+          %td Name
+          %td= @params['name']
+        %tr
+          %td Company
+          %td= @params['company']
+        %tr
+          %td Email
+          %td= @params['email']
+        %tr
+          %td Phone
+          %td= @params['phone']
+        %tr
+          %td Requested date
+          %td= @params['requested_date']
+        %tr
+          %td Time
+          %td= @params['time']
+        %tr
+          %td Message
+          %td= @params['message']

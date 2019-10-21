@@ -1,0 +1,15 @@
+.form-calendar-wrapper
+  .form-calendar.col-md-8
+    .form-calendar-header
+      .goToPrevious &lt;
+      .month
+      .goToNext &gt;
+    .form-calendar-days
+    %input#requested_date{:name => "requested_date", :type => "hidden"}/
+  .time-form.col-md-4
+    %select{:name => "time"}
+      %option{:value => ""} Choose a time
+      %option{:value => "Morning"} Morning
+      %option{:value => "Afternoon"} Afternoon
+      %option{:value => "Evening"} Evening
+  .clearfix

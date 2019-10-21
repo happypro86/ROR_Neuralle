@@ -1,0 +1,13 @@
+#blog-sidebar
+  #share-links
+    = social_share_button_tag(@post.title)
+    .clearfix
+  #posts
+    %h4 Latest
+    %ul
+      - @siebar_popular_posts.each do |post|
+        %hr
+        %li= link_to post.title, refinery.blog_post_path(post)
+  #mc_embed_signup
+    %h4 Join 90% of our audience. Have new episodes and Neuralle Media bonus deals emailed to you
+    = render "shared/mailchimp_form"

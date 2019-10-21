@@ -1,0 +1,28 @@
+tr:
+  refinery:
+    plugins:
+      service_options:
+        title: Service Options
+    service_options:
+      admin:
+        service_options:
+          actions:
+            create_new: Yeni Ekle Service Option
+            reorder: Tekrar sirala Service Options
+            reorder_done: Tekrar siralama tamamlandiService Options
+          records:
+            title: Service Options
+            sorry_no_results: Uzgunum! Herhangi bir sonuc bulunamadi.
+            no_items_yet: Herhangi bir Service Options yok henuz.  Tikla "Yeni Ekle Service Option" eklemek senin ilk service option.
+          service_option:
+            view_live_html: Bunu canlu service option goruntule <br/><em>(yeni bir pencerede acar)</em>
+            edit: Bunu Duzenle service option
+            delete: Bunu Sil service option sonsuza dek
+      service_options:
+        show:
+          other: Diger Service Options
+  activerecord:
+    attributes:
+      'refinery/service_options/service_option':
+        title: Title
+        description: Description

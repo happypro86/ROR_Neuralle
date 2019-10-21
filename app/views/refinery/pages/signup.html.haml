@@ -1,0 +1,41 @@
+.container
+  #body_content
+    / Begin MailChimp Signup Form
+    %link{:href => "//cdn-images.mailchimp.com/embedcode/classic-10_7.css", :rel => "stylesheet", :type => "text/css"}/
+
+    .row
+      .col-md-12
+        #mc_embed_signup
+          %form#mc-embedded-subscribe-form.validate{:action => "//neuralle.us10.list-manage.com/subscribe/post?u=c7a21948a398f006f046c5731&id=5cff14c3b7", :method => "post", :name => "mc-embedded-subscribe-form", :novalidate => "", :target => "_blank"}
+            #mc_embed_signup_scroll
+              - if @page.content_for(:body).present?
+                = raw @page.content_for(:body)
+              - else
+                %h2 Subscribe to our mailing list
+
+              .subscribe-form
+                .indicates-required
+                  %span.asterisk *
+                  indicates required
+                .mc-field-group
+                  %label{:for => "mce-EMAIL"}
+                    Email Address
+                    %span.asterisk *
+                  %input#mce-EMAIL.required.email{:name => "EMAIL", :type => "email", :value => ""}/
+                .mc-field-group
+                  %label{:for => "mce-FNAME"}
+                    First Name
+                    %span.asterisk *
+                  %input#mce-FNAME.required{:name => "FNAME", :type => "text", :value => ""}/
+                .mc-field-group
+                  %label{:for => "mce-LNAME"} Last Name
+                  %input#mce-LNAME{:name => "LNAME", :type => "text", :value => ""}/
+                #mce-responses.clear
+                  #mce-error-response.response{:style => "display:none"}
+                  #mce-success-response.response{:style => "display:none"}
+                / real people should not fill this in and expect good things - do not remove this or risk form bot signups
+                %div{"aria-hidden" => "true", :style => "position: absolute; left: -5000px;"}
+                  %input{:name => "b_c7a21948a398f006f046c5731_5cff14c3b7", :tabindex => "-1", :type => "text", :value => ""}/
+                .clear
+                  %input#mc-embedded-subscribe.btn.primary.bold{:name => "subscribe", :type => "submit", :value => "Subscribe"}/
+        / End mc_embed_signup

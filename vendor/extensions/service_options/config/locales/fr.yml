@@ -1,0 +1,28 @@
+fr:
+  refinery:
+    plugins:
+      service_options:
+        title: Service Options
+    service_options:
+      admin:
+        service_options:
+          actions:
+            create_new: Créer un(e) nouve(au/l/lle) Service Option
+            reorder: Réordonner les Service Options
+            reorder_done: Fin de réordonnancement des Service Options
+          records:
+            title: Service Options
+            sorry_no_results: "Désolé ! Aucun résultat."
+            no_items_yet: 'Il n''y a actuellement aucun(e) Service Option. Cliquer sur "Créer un(e) nouve(au/l/lle) Service Option" pour créer votre premi(er/ère) service option.'
+          service_option:
+            view_live_html: Voir ce(t/tte) service option <br/><em>(Ouvre une nouvelle fenêtre)</em>
+            edit: Modifier ce(t/tte) service option
+            delete: Supprimer définitivement ce(t/tte) service option
+      service_options:
+        show:
+          other: Autres Service Options
+  activerecord:
+    attributes:
+      'refinery/service_options/service_option':
+        title: Title
+        description: Description

@@ -1,0 +1,23 @@
+!!!
+%html
+  %head
+    = render "layouts/meta"
+
+  %body{class: page_controller_class }
+    = render "layouts/preloader"
+
+    #preloaded-content
+      = render "shared/facebook_comments_script"
+      #page-overlay
+      #page_container
+        %header#header
+          = render "/refinery/header"
+        %section#page
+          - if request.path == '/podcast'
+            .masthead
+              %h1 Discover the podcast
+          = yield
+      %footer
+        = render "/refinery/footer"
+
+    = render "layouts/javascripts"

@@ -1,0 +1,36 @@
+<%= form_for [refinery, :footers_admin, @footer] do |f| -%>
+  <%= render '/refinery/admin/error_messages',
+              :object => @footer,
+              :include_object_name => true %>
+
+  <div class='field'>
+    <%= f.label :title -%>
+    <%= f.text_field :title, :class => 'larger widest' -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :text -%>
+    <%= f.text_field :text, :class => 'larger widest' -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :icon -%>
+    <p class="help-block">Choose an icon from <a href="https://fortawesome.github.io/Font-Awesome/icons/" target="_blank">here</a>.</p>
+    <%= f.text_field :icon, :class => 'larger widest' -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :link -%>
+    <%= f.text_field :link, :class => 'larger widest' -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :placement -%>
+    <%= f.select :placement, [ ['left', 'left'], ['right', 'right'], ['centre', 'centre'] ] -%>
+  </div>
+
+  <%= render '/refinery/admin/form_actions', :f => f,
+             :continue_editing => false,
+             :delete_title => t('delete', :scope => 'refinery.footers.admin.footers.footer'),
+             :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @footer.title) -%>
+<% end -%>

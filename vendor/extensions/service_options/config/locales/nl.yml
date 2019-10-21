@@ -1,0 +1,28 @@
+nl:
+  refinery:
+    plugins:
+      service_options:
+        title: Service Options
+    service_options:
+      admin:
+        service_options:
+          actions:
+            create_new: Nieuwe Service Option toevoegen
+            reorder: De volgorde van de Service Options wijzigen
+            reorder_done: Klaar met het wijzingen van de van de Service Option-volgorde
+          records:
+            title: Service Options
+            sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
+            no_items_yet: Er zijn nog geen Service Options. Druk op 'Nieuwe Service Option toevoegen' om de eerste toe te voegen.
+          service_option:
+            view_live_html: Deze service option op de website bekijken <br/><em>(opent in een nieuw venster)</em>
+            edit: Bewerk deze service option
+            delete: Deze service option definitief verwijderen
+      service_options:
+        show:
+          other: Andere Service Options
+  activerecord:
+    attributes:
+      'refinery/service_options/service_option':
+        title: Title
+        description: Description

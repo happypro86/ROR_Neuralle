@@ -1,0 +1,29 @@
+sk:
+  refinery:
+    plugins:
+      footers:
+        title: Footers
+    footers:
+      admin:
+        footers:
+          actions:
+            create_new: Pridať Footer
+            reorder: Preusporiadať Footers
+            reorder_done: Koniec radenia Footers
+          records:
+            title: Footers
+            sorry_no_results: Ľutujeme, ale neboli nájdené žiadne výsledky.
+            no_items_yet: Nie sú vytvorené žiadne Footers. Kliknite na "Pridať Footer" pre pridanie prvého footer.
+          footer:
+            view_live_html: Zobraziť náhľad footer<br/><em>(otvorí sa v novom okne)</em>
+            edit: Upraviť footer
+            delete: Zmazať footer
+      footers:
+        show:
+          other: Daľšie Footers
+  activerecord:
+    attributes:
+      'refinery/footers/footer':
+        title: Title
+        link: Link
+        icon: Icon

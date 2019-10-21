@@ -1,0 +1,26 @@
+%body
+  = render "/refinery/blog/shared/shrinked_post", post: post
+
+-# %article.blog_post{:id => "#{dom_id(post)}"}
+  %header
+    %h1= link_to post.title, refinery.blog_post_path(post)
+    %section.details
+      %time.posted_at{:datetime => "#{l post.published_at.to_date, :format => :default}"}
+        = t('created_at', :scope => 'refinery.blog.shared.posts', :when => l(post.published_at.to_date, :format => :long))
+      - if (categories = post.categories.translated).any?
+        %aside.filled_in
+          = t('filled_in', :scope => 'refinery.blog.posts.show')
+          = raw categories.collect { |category| link_to category.title, refinery.blog_category_path(category) }.to_sentence
+      - if (tags = post.tags).any?
+        %aside.tagged
+          = t('tagged', :scope => 'refinery.blog.posts.show')
+          = raw tags.collect { |tag| link_to tag, refinery.blog_tagged_posts_path(tag.id, tag.name.parameterize) }.to_sentence
+  %section.clearfix
+    - if blog_post_teaser_enabled?
+      = sanitize blog_post_teaser(post), scrubber: PasteFromGoogleDocsScrubber.new
+    - else
+      = sanitize post.body, scrubber: PasteFromGoogleDocsScrubber.new
+  .read-more
+    %p
+      - if blog_post_teaser_enabled? && post.custom_teaser.present?
+        = link_to t('read_more', :scope => 'refinery.blog.shared.posts'), refinery.blog_post_path(post)

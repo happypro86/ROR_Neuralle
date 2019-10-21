@@ -1,0 +1,7 @@
+.recent-posts
+  %h3 Most Read
+  - @popular_posts.each_slice(4) do |slice|
+    .container
+      .row
+        = render :partial => "/refinery/blog/shared/post", collection: slice
+      .clearfix

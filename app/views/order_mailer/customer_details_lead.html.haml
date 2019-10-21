@@ -1,0 +1,13 @@
+%h2 Customer info
+%p Name: <b>#{@order.try(:name)}</b>
+%p Email: <b>#{@order.try(:email)}</b>
+- if @order.company.present?
+  %p Company: <b>#{@order.try(:company)}</b>
+%p Phone: <b>#{@order.try(:phone_number)}</b>
+- if @order.country.present?
+  %p Country: <b>#{country_name(@order.try(:country))}</b>
+
+%p Type: <b>#{order_specifics_business}</b>
+%p Goal: <b>#{order_specifics_goal}</b>
+%p Regularity: <b>#{order_specifics_regularity}</b>
+%p Style guide? <b>#{order_specifics_style}</b>

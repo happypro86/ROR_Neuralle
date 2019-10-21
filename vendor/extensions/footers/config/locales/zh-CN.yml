@@ -1,0 +1,31 @@
+zh-CN:
+  refinery:
+    plugins:
+      footers:
+        title: Footers
+    footers:
+      admin:
+        footers:
+          actions:
+            create_new: 建立新的 Footer
+            reorder: 对 Footers 重新排序
+            reorder_done: 对 Footers 的重新排序结束
+          records:
+            title: Footers
+            sorry_no_results: 对不起，未找到结果。 #Sorry! There are no results found.
+
+            # There are no Footers yet. Click "Add New Footer" to add your first footer.
+            no_items_yet: 目前没有 Footers . 点击 "Add New Footer" 创建一个footer.
+          footer:
+            view_live_html: 查看 footer 的最新内容.<br/><em>(新窗口中打开)</em>
+            edit: 编辑 footer
+            delete: 永久删除 footer
+      footers:
+        show:
+          other: 其他 Footers
+  activerecord:
+    attributes:
+      'refinery/footers/footer':
+        title: Title
+        link: Link
+        icon: Icon

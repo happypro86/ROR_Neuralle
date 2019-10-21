@@ -1,0 +1,26 @@
+.row
+  .col-sm-12
+    %h1.header-description The Uncommon podcast helps you build your knowledge, skills & mindset through interviews with unique individuals
+  %br/
+= render 'static_pages/podcast/audio_playlist', podcasts: @podcasts
+%div
+  - @page = ::Refinery::Page.find(18)
+  = raw @page.content_for(:body)
+
+  %p.episode-index
+    %span
+      %br/
+  %p.episode-index
+    %span We'd like to give a special shout-out and thanks to S.F.T for letting us use their track 
+    %a{href: "http://www.soundcloud.com/sftbeats", :style => "text-align: -webkit-center;", title: "http://www.soundcloud.com/sftbeats"} 'Birds Are Away'
+    %span for our theme song.
+    %br/
+  %p.episode-index
+    %span
+      %br/
+  %hr/
+  %br/
+  %h2
+    90% of our listeners subscribe to have priority insight.
+    = succeed "You can do so too. Simply sign up below..." do
+      %br/

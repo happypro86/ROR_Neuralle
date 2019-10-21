@@ -1,0 +1,24 @@
+.lightbox {
+  -webkit-transition: top 300ms;
+  -moz-transition: top 300ms;
+  -o-transition: top 300ms;
+  transition: top 300ms;
+
+  a {
+    border: none !important;
+    text-decoration: none !important;
+  }
+}
+
+.lb-closeContainer, .lb-loader {
+  display: none !important;
+}
+
+.lightbox .lb-image {
+  border: none !important;
+  border-radius: 5px !important;
+}
+
+.lb-outerContainer {
+  background-color: rgba(0, 0, 0, 0.3) !important;
+}

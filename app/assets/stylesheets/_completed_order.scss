@@ -1,0 +1,56 @@
+#completed-order {
+  background: linear-gradient(45deg, #fedad8 0, #fcdccd 100%);
+
+  #headline {
+    padding: 170px 0 0;
+    text-align: center;
+
+    img {
+      max-width: 250px;
+      margin: 0 0 20px;
+    }
+    h1 {
+      padding: 0;
+      margin: 30px 0 10px;
+    }
+    h3 {
+      margin: 0;
+    }
+    h4 {
+      margin: 40px 0 0;
+    }
+
+    @media(max-width: 991px) {
+      padding: 150px 0 0;
+    }
+    @media(max-width: 767px) {
+      padding: 115px 0 0;
+      img {
+        max-width: 200px;
+      }
+    }
+    @media(max-width: 449px) {
+      img {
+        max-width: 150px;
+        margin: 0 0 10px;
+      }
+      padding: 105px 0 0;
+    }
+  }
+
+  #invoice {
+    padding: 60px 0 70px;
+    h2 {
+      text-align: center;
+      margin: 0 0 40px;
+    }
+
+    @media(max-width: 449px) {
+      padding: 50px 0 60px;
+    }
+    @media(max-width: 449px) {
+      padding: 50px 0;
+    }
+  }
+
+}

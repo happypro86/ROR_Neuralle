@@ -1,0 +1,21 @@
+.clearfix
+.slider-wrapper
+  -# .slider-info
+    %p.slider-title= product.name
+  - mins = mins.present? ? mins : false
+  - money = money.present? ? money : false
+  = form_for order_item(product.id), remote: true do |f|
+    = f.hidden_field :product_id, value: product.id
+    = f.text_field :quantity, class: "product-slider", "data-slider-min"=>0, "data-slider-max"=>quantity, "data-slider-step"=>step, "data-slider-value"=>order_item_quantity(product.id), "data-slider-handle"=>"custom", "data-slider-tooltip"=>"hide", "data-money"=>money, "data-price"=>set_discount(product.price, false)
+  -# %p.slider-total #{formatted_price_with_symbol(product.price * order_item_quantity(product.id))}
+  .clearfix
+
+
+-# .clearfix
+-# .slider-wrapper
+-#   .slider-info
+-#     %p.slider-title= product.name
+-#   = form_for order_item(product.id), remote: true do |f|
+-#     = f.hidden_field :product_id, value: product.id
+-#     = f.text_field :quantity, class: "product-slider", "data-slider-min"=>"0", "data-slider-max"=>quantity, "data-slider-step"=>"1", "data-slider-value"=>order_item_quantity(product.id), "data-slider-handle"=>"custom", "data-slider-tooltip"=>"hide", "data-price"=>set_discount(product.price, false)
+-#   %p.slider-total #{formatted_price_with_symbol(product.price * order_item_quantity(product.id))}

@@ -1,0 +1,13 @@
+<li class='clearfix record <%= cycle("on", "on-hover") %>' id="<%= dom_id(footer) -%>">
+  <span class='title'>
+    <%= footer.title %>
+
+  </span>
+  <span class='actions'>
+
+    <%= action_icon(:edit,    refinery.edit_footers_admin_footer_path(footer), t('.edit') ) %>
+    <%= action_icon(:delete,  refinery.footers_admin_footer_path(footer), t('.delete'),
+      { class: "cancel confirm-delete",
+        data: {confirm: t('message',  scope: 'refinery.admin.delete', title: footer.title)}}  ) %>
+  </span>
+</li>

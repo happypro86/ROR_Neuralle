@@ -1,0 +1,82 @@
+= form_for [refinery, :podcasts_admin, @podcast], html: { multipart: true } do |f|
+  = render '/refinery/admin/error_messages', |
+    :object => @podcast,                     |
+    :include_object_name => true             |
+  .field
+    = f.label :title
+    = f.text_field :title, :class => 'larger widest'
+  .field
+    = f.label :subtitle
+    = f.text_field :subtitle, :size => 100
+  .field
+    = f.label :author
+    = f.text_field :author
+  .field
+    %span.label_with_help
+      = f.label :file_id, 'Podcast episode file'
+      -# = refinery_help_tag "Supported file formats include mp3, m4a, mov, m4v, mp4, pdf"
+      = refinery_help_tag "Only mp3 format is supported"
+
+    -# CarrierWave uploader work around since Dragonfly crashes because of the Heroku worker timout
+    -# .well{style: "padding: 10px; border: 1px solid red; background: #ffd8d8"}
+      %h2 Keep out for now
+      - if !@podcast.new_record?
+        - if @podcast.podcast_file_tmp
+          <b>Currently uploading:</b> #{@podcast.podcast_file_tmp}, please wait...
+        - else
+          <b>File uploaded:</b> #{@podcast.podcast_file.filename}
+      %br
+      = f.file_field :podcast_file
+    = f.label :file_id, 'Insert direct link:'
+    = f.text_field :file_url, :size => 100
+
+    -# Standart refinery podcast file picker
+    -# = render '/refinery/admin/resource_picker', |
+      :f => f,                                  |
+      :field => :file_id,                       |
+      :resource => @podcast.file,               |
+      :description => 'podcast'                 |
+
+  .field
+    %span.label_with_help
+      = f.label :image_id, "Podcast episode image"
+      = refinery_help_tag "iTunes prefers square .jpg or .png images that are between 1400 x 1400 pixels and 3000 x 3000 pixels"
+    = render :partial => "/refinery/admin/image_picker", :locals => { |
+        :f => f,                                                      |
+        :field => :image_id,                                          |
+        :image => @podcast.image,                                     |
+        :toggle_image_display => false                                |
+      }                                                               |
+  .field
+    = f.label :published_at
+    = f.date_select :published_at
+  .field
+    %span.label_with_help
+      = f.label :duration
+      = refinery_help_tag "In HH:MM:SS format. E.g. \"10:22\" for 10 minutes 22 seconds"
+    = f.text_field :duration, :size => 6
+  .field
+    %span.label_with_help
+      = f.label :keywords
+      = refinery_help_tag "Up to 12 keywords separated by commas. <br/><br/>E.g. rails, ruby on rails, refinerycms, refinery. <br/><br/>According to iTunes, the best use for keywords is to include common misspellings of your name or title, to ensure your podcast is still searchable despite a misspelling. To prevent keyword abuse, iTunes indexes only the first 12 keywords found in this tag."
+    = f.text_field :keywords, :size => 100
+    %br/
+  .field
+    #page-tabs.clearfix.ui-tabs.ui-widget.ui-widget-content.ui-corner-all
+      %ul#page_parts
+        - [:summary].each_with_index do |part, part_index|
+          %li{:class => "ui-state-default#{' ui-state-active' if part_index == 0}"}
+            = link_to t("#{part}", :scope => "activerecord.attributes.refinery/podcasts/podcast", :default => part.to_s.titleize), "##{part}"
+      #page_part_editors
+        - [:summary].each do |part|
+          .page_part{:id => part}
+            = f.text_area part, :rows => 20, :class => 'wymeditor widest'
+  = render '/refinery/admin/form_actions', :f => f,                                                   |
+    :continue_editing => false,                                                                       |
+    :delete_title => t('delete', :scope => 'refinery.podcasts.admin.podcasts.podcast'),               |
+    :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @podcast.title) |
+- content_for :javascripts do
+  :javascript
+    $(document).ready(function(){
+      page_options.init(false, '', '');
+    });

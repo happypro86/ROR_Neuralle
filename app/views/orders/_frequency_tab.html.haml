@@ -1,0 +1,48 @@
+%section#frequency
+  %h2 Select the Frequency
+  %h4 Save 20% and receive extra perks with a monthly plan.
+  %h5.warning Monthly plan is currently available only if paying with card.
+
+  #frequency-selector
+    = form_for @order, remote: true do |f|
+      .row
+        .col-md-8.col-md-offset-2.col-sm-12
+          .row
+
+            .col-xs-6.tile-wrapper
+              = f.label :subscription_type_1, class: "frequency-tile", id: "once" do
+                %h4 Once Off
+                %ul
+                  %li
+                    %label Discount
+                    %span 0%
+                  %li
+                    %label Communication
+                    = image_tag "slack_logo.png"
+                  %li
+                    %label Revisions
+                    %span 1 revision
+                = f.radio_button :subscription_type, "1", checked: @order.subscription_type == 1
+
+            .col-xs-6.tile-wrapper
+              = f.label :subscription_type_2, class: "frequency-tile", id: "monthly" do
+                %h4 Monthly
+                %ul
+                  %li
+                    %label Discount
+                    %span 20%
+                  %li
+                    %label Communication
+                    = image_tag "slack_logo.png"
+                  %li
+                    %label Revisions
+                    %span 2 revisions
+                = f.radio_button :subscription_type, "2", checked: @order.subscription_type == 2
+                .clearfix
+
+    %p.centered-text Once payment is made, our&nbsp;team will make direct&nbsp;contact and flesh out any specifics to&nbsp;start&nbsp;implementing your&nbsp;production straight&nbsp;away. We&nbsp;typically respond within&nbsp;24&nbsp;hours and aim&nbsp;to&nbsp;start as&nbsp;soon&nbsp;as&nbsp;possible.
+
+    %p.terms
+      By proceeding, you agree to&nbsp;the&nbsp;terms set out in this
+      = link_to service_agreement_page_path, target: "_blank" do
+        Client&nbsp;Service&nbsp;Agreement

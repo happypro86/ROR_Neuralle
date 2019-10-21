@@ -1,0 +1,18 @@
+%h4 How long will each podcast episode be?
+.long-handle
+  = render "orders/duration_slider", product: @podcast_products.first, quantity: 90, step: 1, mins: true
+.clearfix
+
+%h4 How many episodes?
+= render "orders/quantity_slider", product: @podcast_products.first, quantity: 30, step: 1, money: false, mins: true
+.clearfix
+
+.hidden-product
+  .product-offer{ class: ("hidden" if podcast_host_present?) }
+    %h4 Do you want a podcast host?
+    = link_to "Yes", "javascript:void(0)", class: "btn uppercase bold"
+
+  .product-select{ class: ("active" if podcast_host_present?) }
+    %h4 How much per hour?
+    .long-handle
+      = render "orders/footage_per_hour_slider", product: @podcast_host_product, quantity: 3000, step: 100, money: true

@@ -1,0 +1,15 @@
+.instagram-media-carousel.owl-carousel.owl-theme
+  - @instagram.each do |inst|
+    .item.hide
+      - if inst.videos?
+        .video-container
+          .aspect-ratio
+            = video_tag inst.videos.standard_resolution.url, type: "video/mp4"
+            = link_to "javascript:void(0)", class: "play-button" do
+              = fa_icon "play"
+            = link_to "javascript:void(0)", class: "toggle-fullscreen" do
+              = image_tag "video_controls/fullscreen.svg"
+      - else
+        .image-container
+          = link_to inst.images.standard_resolution.url, "data-lightbox" => "neuralle-instagram" do
+            = image_tag inst.images.low_resolution.url

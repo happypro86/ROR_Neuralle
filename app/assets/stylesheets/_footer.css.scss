@@ -1,0 +1,30 @@
+footer {
+  text-align: center;
+  padding: 25px 0;
+  background-color: $section_gray;
+
+  &.white {
+    background-color: white;
+  }
+
+  a {
+    font-family: "Quicksand", sans;
+    font-size: 4.2rem;
+    border: none;
+  }
+
+  img {
+    width: 150px;
+  }
+
+  .social-links {
+    margin: 15px 0;
+    a {
+      margin: 0 4px;
+      font-size: 3rem;
+      &:hover,  &:focus {
+        color: $blue;
+      }
+    }
+  }
+}

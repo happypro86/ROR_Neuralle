@@ -1,0 +1,77 @@
+- title_tag "Customisable Podcast & Video Production | Neuralle"
+- description_tag "Simple, flexible, honest pricing"
+
+#pricing
+  .container
+    #order-wizard
+
+      .navbar.wizard-nav
+        .navbar-inner
+          %ul
+            %li
+              %a{ href: "#intro-tab", "data-toggle" => "tab" }
+                = image_tag 'pricing/how_this_works.svg'
+                How this works
+            %li
+              %a{ href: "#customer-specifics-tab", "data-toggle" => "tab" }
+                = image_tag 'pricing/situation.svg'
+                Situation
+            %li
+              %a{ href: "#podcast-tab", "data-toggle" => "tab" }
+                = image_tag 'pricing/podcast.svg'
+                Podcasts
+            %li
+              %a{ href: "#video-tab", "data-toggle" => "tab" }
+                = image_tag 'pricing/video.svg'
+                Video
+            %li
+              %a{ href: "#visual-tab", "data-toggle" => "tab" }
+                = image_tag 'pricing/graphic.svg'
+                Design
+            %li
+              %a{ href: "#frequency-tab", "data-toggle" => "tab" }
+                = image_tag 'pricing/frequency.svg'
+                Frequency
+
+          .delimiter
+
+      #bar.progress
+        .progress-bar{ role: "progressbar", "aria-valuenow" => "0", "aria-valuemin" => "0", "aria-valuemax" => "100", style: "width: 0;" }
+      .clearfix
+
+      .tab-content
+        .tab-pane#intro-tab
+          = render "intro_tab"
+        .tab-pane#customer-specifics-tab
+          = render "customer_specifics_tab"
+        .tab-pane#podcast-tab
+          = render "podcast_tab"
+        .tab-pane#video-tab
+          = render "video_tab"
+        .tab-pane#visual-tab
+          = render "visual_tab"
+        .tab-pane#frequency-tab
+          = render "frequency_tab"
+
+      .clearfix
+
+      #errors
+
+      #total-price
+        = render "total_price"
+
+      %ul.pager.wizard
+        = link_to "Back", "#", class: "btn cta gray wizard-prev-custom"
+        %li.next.wizard-start
+          = link_to "Okay, let's go!", "#", class: "btn cta primary"
+        %li.next.wizard-next
+          = link_to "Next", "#", class: "btn cta blue"
+        %li.finish.wizard-finish
+          = render "wizard_finish_button"
+
+        .clearfix
+
+  = link_to "Book Free Consult", "#lead-capture-modal", "data-toggle" => "modal", id: "lead-capture", class: "btn uppercase bold green"
+
+  .modal.fade#lead-capture-modal{ :role => "dialog" }
+    = render "orders/lead_capture_modal"

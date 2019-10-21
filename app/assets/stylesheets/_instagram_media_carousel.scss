@@ -1,0 +1,112 @@
+#media #instagram-carousel {
+  padding: 60px 0;
+  background: linear-gradient(45deg, rgba(88, 109, 226, 0.3) 0, rgba(65, 184, 228, 0.3) 100%);
+
+  .narrow {
+    max-width: 850px;
+    margin: 0 auto;
+  }
+
+  h2 {
+    text-align: center;
+    margin: 0 0 25px;
+  }
+
+  .owl-dots {
+    margin-bottom: -10px;
+    .owl-dot {
+      span {
+        background-color: $characoal;
+        opacity: 0.5;
+      }
+      &.active {
+        span {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  @media(max-width: 767px) {
+    padding: 50px 0;
+  }
+}
+
+.neat-box {
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+  transition: all .2s ease-in-out;
+  opacity: 0.95;
+  &:hover {
+    opacity: 1;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.35);
+  }
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  padding: 25px;
+
+  .aspect-ratio {
+    @extend .neat-box;
+    width: 100%;
+    padding-bottom: 100%;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    &:hover {
+      .play-button {
+        opacity: 1;
+      }
+    }
+  }
+
+  video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  .play-button {
+    position: absolute;
+    pointer-events: none;
+    width: 60px;
+    height: 60px;
+    top: calc(50% - 30px);
+    left: calc(50% - 30px);
+    background: $characoal;
+    border-radius: 100px;
+    border: none;
+    opacity: 0.6;
+    .fa {
+      color: $white;
+      font-size: 30px;
+      position: absolute;
+      top: 15px;
+      left: 21px;
+    }
+  }
+
+  .toggle-fullscreen {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    border: none;
+    display: none;
+    img {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+  padding: 25px;
+
+  img {
+    @extend .neat-box;
+  }
+}

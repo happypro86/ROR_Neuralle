@@ -1,0 +1,28 @@
+en:
+  refinery:
+    plugins:
+      service_options:
+        title: Service Options
+    service_options:
+      admin:
+        service_options:
+          actions:
+            create_new: Add New Service Option
+            reorder: Reorder Service Options
+            reorder_done: Done Reordering Service Options
+          records:
+            title: Service Options
+            sorry_no_results: Sorry! There are no results found.
+            no_items_yet: There are no Service Options yet. Click "Add New Service Option" to add your first service option.
+          service_option:
+            view_live_html: View this service option live <br/><em>(opens in a new window)</em>
+            edit: Edit this service option
+            delete: Remove this service option forever
+      service_options:
+        show:
+          other: Other Service Options
+  activerecord:
+    attributes:
+      'refinery/service_options/service_option':
+        title: Title
+        description: Description

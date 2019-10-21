@@ -1,0 +1,15 @@
+#completed-order
+  %section#headline
+    .container
+      = image_tag "media/company.png"
+      - if just_paid
+        %h1 Thank you for the purchase!
+        %h3 We will get back to you soon.
+
+      %h4 You can always see your order by&nbsp;this&nbsp;link: #{completed_order_link(completed_order_url)}
+
+  %section#invoice
+    .container
+      %h2 Your order details
+      #review-list
+        = render "review_list"

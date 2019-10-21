@@ -1,0 +1,20 @@
+// Update pricing page
+
+
+$('#customer-specifics-tab').html("<%=j render 'orders/customer_specifics_tab' %>")
+$('#podcast-sliders').html("<%=j render 'orders/podcast_sliders' %>")
+$('#video-sliders').html("<%=j render 'orders/video_sliders' %>")
+$('#image-sliders').html("<%=j render 'orders/image_sliders' %>")
+
+$('#social-tab').html("<%=j render 'orders/social_distribution_tab' %>")
+$('#video-social-distribution').html("<%=j render 'orders/video_social_distribution' %>")
+$('#visual-social-distribution').html("<%=j render 'orders/visual_social_distribution' %>")
+
+$('#final-details-tab').html("<%=j render 'orders/final_details_tab' %>")
+
+document.cookie = "latest_tab="
+$('#order-wizard').bootstrapWizard('show', 0)
+
+$('#total-price').html("<%=j render 'orders/total_price' %>")
+
+$('#errors').html("")

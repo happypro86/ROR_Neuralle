@@ -1,0 +1,12 @@
+- content_for :title, "#{t('.posts_tagged')} “#{h(@tag_name.titleize)}”".html_safe
+- content_for :body_content_title, "#{t('.posts_tagged')} “#{h(@tag_name.titleize)}”".html_safe
+- content_for :body do
+  - if @posts.any?
+    %section#blog_posts
+      = render :partial => "/refinery/blog/shared/post", :collection => @posts
+      = will_paginate @posts
+  - else
+    %p= t('.no_blog_articles_yet')
+= render '/refinery/blog/shared/body_content_right'
+= render "/refinery/content_page"
+- content_for :stylesheets, stylesheet_link_tag('refinery/blog/frontend')

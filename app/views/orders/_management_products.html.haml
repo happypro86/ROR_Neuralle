@@ -1,0 +1,19 @@
+-# .product-tile.mgmt{ "data-price" => set_discount(@management_product_price) }
+-#   %h4 Social Media Profile Management
+-#   %p.description We manage your preferred social platform, deciding on the best time to post content and engage with followers. We will upload, hashtag & manage 15 of your posts each month - whether it's your original content or media we've created for you.
+-#   %p.description Select your preferred channels for us to manage.
+-#   %hr
+-#   %h5 Select your channels:
+-#
+-#   - @management_products.each do |product|
+-#     .mgmt-product
+-#       = form_for order_item(product.id), remote: true do |f|
+-#         = f.hidden_field :product_id, value: product.id
+-#         = label_tag "order_item_quantity_#{product.id}" do
+-#           = fa_icon product.name.downcase
+-#           = f.check_box :quantity, {id: "order_item_quantity_#{product.id}"}, 1, 0
+-#
+-#   %hr
+-#     .product-price= formatted_management_total_price
+-#
+-# .clearfix

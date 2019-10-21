@@ -1,0 +1,31 @@
+%section#podcast-production
+  %h2 Podcast Production
+
+  .row
+    .col-md-5
+      .sliders-explanation
+        %p Choose an episode timeframe to suit your chat based podcast episode. We take your raw audio and introductory music, to create a full chat based episode for A$15 a minute.
+        %h5 What we do
+        %ul
+          %li
+            .icon= fa_icon "microphone"
+            .text Artwork & RSS Creation
+          %li
+            .icon= fa_icon "sliders"
+            .text Draft audio engineering
+          %li
+            .icon= fa_icon "list-ul"
+            .text Review & revisions
+          %li
+            .icon= fa_icon "pencil"
+            .text Show notes
+          %li
+            .icon= fa_icon "file"
+            .text Final audio file
+          %li
+            .icon= fa_icon "rss"
+            .text Distribution to RSS
+
+    .col-md-7#podcast-sliders.sliders-wrapper
+      = render "orders/podcast_sliders"
+      .clearfix
