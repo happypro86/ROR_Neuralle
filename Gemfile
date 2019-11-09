@@ -42,7 +42,7 @@ gem 'instagram_api_client'
 gem 'rack-protection', '~> 1.5.5'
 gem 'rack-attack'
 gem 'nokogiri', '~> 1.8.2'
-gem 'loofah', '~> 2.2.1'
+gem 'loofah', '~> 2.3.1'
 gem 'sprockets', '~> 2.12.5'
 # Wrapper for MailChimp's API
 gem 'gibbon', '~> 2.2', '>= 2.2.3'
